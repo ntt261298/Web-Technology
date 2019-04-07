@@ -1,0 +1,38 @@
+/* CSS variables */
+:root {
+  --primary: #201e1f;
+  --gray: #3e3e3e;
+  --light: #fefffe;
+  --blue: hsl(205, 100%, 43%);
+  --shadow: 0px 5px 5px rgba(104, 104, 104, 0.8);
+  --easeOut: all 0.5s ease-out;
+}
+
+html {
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--light);
+}
+main {
+  min-height: calc(100vh - 200px);
+  color: var(--light);
+}
+body {
+  z-index: -1;
+  background: var(--primary);
+  margin: 0;
+}
+
+img {
+  max-width: 100%;
+  color: var(--light);
+}
+.header {
+  margin: 0;
+  height: 80px;
+  background: var(--gray);
+}
+ul {
+  list-style-type: none;
+  padding-left: 0px;
+}

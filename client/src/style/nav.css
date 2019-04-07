@@ -1,0 +1,43 @@
+/* nav style */
+.nav-bar {
+  background: var(--primary);
+  color: var(--light);
+  margin-top: 10px;
+}
+.category ul {
+  padding-left: 0;
+
+}
+.category ul li {
+  list-style-type: none;
+  margin-left: 0;
+  line-height: 1.5rem;
+  color: var(--light);
+}
+a:hover {
+  cursor: pointer;
+  color: #00CB83;
+}
+.bar {
+  width: 200px;
+  height: 0.75rem;
+  border-radius: 10px;
+  box-shadow: 0px 2px 2px rgba(104, 104, 104, 0.8);
+  background: #2e302e;
+  position: relative;
+  margin: 2rem 0;
+}
+.circle-price {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 100%;
+  background: var(--grey);
+  border: 5px solid var(--light);
+}
+.circle-price-1 {
+  left: 1.5rem;
+}
+.circle-price-2 {
+  right: 1.5rem;
+}

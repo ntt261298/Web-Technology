@@ -1,0 +1,110 @@
+/* menu style */
+.menu {
+  top:0px;
+  position: fixed;
+  z-index: 2;
+  width: 100%;
+  background: var(--light);
+  align-items: center;
+  text-align: center;
+  display: grid;
+  grid-gap: 20px;
+  padding: 1rem;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-areas:
+    'logo logo search search search search search option'
+}
+
+.logo {
+  grid-area: logo;
+}
+.logo .logo-img {
+  width: 80px;
+}
+
+.search {
+  grid-area: search;
+  position: relative;
+}
+.search input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  border-radius: 30px;
+  box-shadow: var(--shadow);
+}
+.search img {
+  position: absolute;
+  height: 80%;
+  top: 5px;
+  right: 0px;
+}
+.search img:hover {
+  cursor: pointer;
+}
+
+.option {
+  grid-area: option;
+}
+.option img {
+  float: left;
+  width: 40px;
+  padding: 5px;
+}
+.user-img {
+  padding: 0 15px;
+}
+.user-img:hover {
+  cursor: pointer;
+}
+.cart img {
+  margin-top: 3px;
+}
+.cart:hover {
+  cursor: pointer;
+}
+/* Responsive Style */
+@media screen and (max-width: 600px) {
+  .menu {
+    top:0px;
+    position: fixed;
+    z-index: 2;
+    width: 100%;
+    background: var(--light);
+    align-items: center;
+    text-align: center;
+    display: grid;
+    grid-gap: 20px;
+    padding: 1rem;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-areas:
+      'logo'
+      'search'
+      'option'
+  }
+
+  .search input[type="text"] {
+    width: 100%;
+    padding: 5px;
+  }
+
+  .option {
+    grid-area: option;
+    text-align: center;
+    display: flex;
+    grid-gap: 10px;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas:
+      'dropdown cart'
+  }
+  .dropdown {
+    grid-area: dropdown;
+  }
+  .cart {
+    grid-area: cart;
+  }
+  .option img {
+    float: left;
+    width: 40px;
+    padding: 5px;
+  }
+}

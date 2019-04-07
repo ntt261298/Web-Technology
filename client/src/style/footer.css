@@ -1,0 +1,70 @@
+/* main footer style */
+.main-footer {
+  color: var(--light);
+  background-color: var(--gray);
+  font-size: 0.6rem;
+  padding: 0 2rem 1rem 2rem;
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-areas:
+    'team open-time payment socials download contact feedback'
+
+}
+.team {
+  grid-area: team;
+}
+.open-time {
+  grid-area: open-time;
+}
+.payment {
+  grid-area: payment;
+  width: 60%;
+}
+.socials {
+  grid-area: socials;
+  width: 60%;
+}
+.download {
+  grid-area: download;
+}
+.contact {
+  grid-area: contact;
+}
+.feedback {
+  grid-area: feedback;
+}
+.main-footer img {
+  height: 1.5rem;
+}
+.main-footer {
+  margin-bottom: 0;
+}
+.main-footer h3 {
+  font-size: 1rem;
+  padding: 0.7rem 0;
+}
+/* Responsive Style */
+@media screen and (max-width: 600px) {
+  .main-footer {
+    text-align: center;
+    padding: 0 0 1rem 1rem;
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-areas:
+      'team'
+      'open-time'
+      'payment'
+      'socials'
+      'download'
+      'contact'
+      'feedback'
+  }
+  .payment {
+    width: 100%;
+  }
+  .socials {
+    width: 100%;
+  }
+}
