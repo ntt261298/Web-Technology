@@ -5,9 +5,8 @@ import Menu from './layout/Menu.js';
 import Login from './layout/Login.js';
 import ForgetPwd from './layout/ForgetPwd.js';
 import Footer from './layout/Footer.js';
-// import ShoppingHistory from './userpage/ShoppingHistory.js';
 import User from './userpage/User.js';
-import ShoppingHistory from './userpage/ShoppingHistory.js';
+import Activities from './userpage/Activities';
 
 export default class userPage extends React.Component {
   render() {

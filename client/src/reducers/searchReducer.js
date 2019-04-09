@@ -1,4 +1,4 @@
-import { SEARCH_BOOK, SEARCH_CATE } from '../actions/types';
+import { SEARCH_QUESTION, SEARCH_CATE } from '../actions/types';
 
 const initialState = {
   results: [],
@@ -6,7 +6,7 @@ const initialState = {
 
 export default function(state = initialState, action) {
   switch (action.type) {
-    case SEARCH_BOOK:
+    case SEARCH_QUESTION:
       return {
         ...state,
         results: action.payload

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Modal} from 'reactstrap';
-import { toggleLogin, toggleForget, } from '../../actions/itemsAction';
+import { toggleLogin, toggleForget, } from '../../actions/questionsAction';
 import { verifyToken, userLogin, userSignup } from '../../actions/accountsAction';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';

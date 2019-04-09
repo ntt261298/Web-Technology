@@ -1,6 +1,6 @@
 import React from 'react';
 import { Modal, ModalHeader, ModalBody, FormGroup, Form, Label, Input, Button} from 'reactstrap';
-import { toggleForget } from '../../actions/itemsAction';
+import { toggleForget } from '../../actions/questionsAction';
 import { sendEmail } from '../../actions/accountsAction';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';

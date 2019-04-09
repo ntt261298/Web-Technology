@@ -1,6 +1,5 @@
 import React from 'react';
-import { getInfor, getShoppingHistory, updateUserInfor } from '../../actions/accountsAction.js';
-import Item from './Item.js';
+import { getInfor, getActivities, updateUserInfor } from '../../actions/accountsAction.js';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 import currency from '../../helpers/currency.js';
@@ -22,7 +21,7 @@ class User extends React.Component {
       orderId: ''
   }
   componentDidMount() {
-    this.props.getShoppingHistory(this.props.account.token);
+    this.props.getActivities(this.props.account.token);
     this.props.getInfor(this.props.account.token);
     setTimeout(() => {
       const infor = this.props.account.infor;
@@ -208,7 +207,7 @@ class User extends React.Component {
 
                   <a class="prf-navbar" onClick={this.changePage.bind(this, 'history')}>
                     <img src="../image/history.svg" style={{paddingRight: '20px'}}/>
-                    History
+                    Activities
                   </a>
 
         {/* <a class="prf-navbar" href="library.html">
@@ -550,7 +549,7 @@ class User extends React.Component {
 };
 
 User.propTypes = {
-  getShoppingHistory: PropTypes.func.isRequired,
+  getActivities: PropTypes.func.isRequired,
   getInfor: PropTypes.func.isRequired,
   updateUserInfor: PropTypes.func.isRequired
 }
@@ -559,4 +558,4 @@ const mapStateToProps = state => ({
   account: state.account
 })
 
-export default connect(mapStateToProps, {getInfor, getShoppingHistory, updateUserInfor})(User);
+export default connect(mapStateToProps, {getInfor, getActivities, updateUserInfor})(User);

@@ -2,14 +2,13 @@ import React from 'react';
 import { Card, Button, CardImg, CardTitle, CardText, CardDeck,
  CardSubtitle, CardBody } from 'reactstrap';
 import { connect } from 'react-redux';
-import { getBooks} from '../../actions/itemsAction';
-// import { addToCart} from '../actions/cartAction';
+import { getQuestions} from '../../actions/questionsAction';
 import { PropTypes } from 'prop-types';
 import { Link } from 'react-router-dom';
 
 class BookList extends React.Component {
   componentDidMount() {
-    this.props.getBooks()
+    this.props.getQuestions()
   }
 
   renderStar(rating) {
@@ -24,8 +23,6 @@ class BookList extends React.Component {
   }
 
   render() {
-    const { books } = this.props.book;
-    console.log(books);
     return (
       <div className="question-home">
         <div className="head">
@@ -293,12 +290,11 @@ class BookList extends React.Component {
 }
 
 BookList.propTypes = {
-  getBooks: PropTypes.func.isRequired,
-  // addToCart: PropTypes.func.isRequired
+  getQuestions: PropTypes.func.isRequired,
 }
 
 const mapStateToProps = state => ({
-  book: state.book
+  question: state.question
 })
 
-export default connect(mapStateToProps, {getBooks})(BookList);
+export default connect(mapStateToProps, {getQuestions})(BookList);

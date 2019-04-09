@@ -1,25 +1,25 @@
-import { SET_LOADING, GET_BOOKS, GET_BOOK, GET_CATE } from '../actions/types';
+import { SET_LOADING, GET_QUESTIONS, GET_QUESTION, GET_CATE } from '../actions/types';
 
 const initialState = {
-  books: [],
-  book: [],
+  quesions: [],
+  question: [],
   loading: false,
   cate: []
 };
 
 export default function(state = initialState, action) {
   switch (action.type) {
-    case GET_BOOKS:
+    case GET_QUESTIONS:
       return {
         ...state,
-        books: action.payload,
+        questions: action.payload,
         loading: false
       };
-    case GET_BOOK: {
+    case GET_QUESTION: {
       console.log(action.payload);
       return {
         ...state,
-        book: state.book.push(action.payload),
+        question: state.question.push(action.payload),
         loading: false
       };
     }

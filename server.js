@@ -7,6 +7,7 @@ const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const flash = require('connect-flash');
 const expressValidator = require('express-validator');
+var cors = require('cors')
 // require('./config/passport')(passport);
 
 const questions = require('./routes/api/questions.js');
@@ -31,6 +32,7 @@ app.set('views', path.join(__dirname, 'admin'));
 app.set('view engine', 'ejs');
 
 // BodyParser Middleware
+app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(session({

@@ -9,7 +9,7 @@ export default class Footer extends React.Component {
           <h3>Design By Group 22</h3>
           <p>Nguyễn Tiến Trường</p>
           <p>Phạm Quang Trung</p>
-          <p>Phạm Hiếu Trưng</p>
+          <p>Phạm Hiếu Trung</p>
         </div>
       <div className="open-time">
         <h3>Open</h3>

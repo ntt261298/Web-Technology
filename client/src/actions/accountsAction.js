@@ -55,7 +55,7 @@ export const userLogout = token => dispatch => {
     })
 }
 
-export const getShoppingHistory = token => dispatch => {
+export const getActivities = token => dispatch => {
     axios.get(`/api/user/history?token=${token}`)
     .then(res => {
         dispatch({

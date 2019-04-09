@@ -11,12 +11,12 @@ export const getComment = () => dispatch => {
     )
 };
 
-export const addComment = (token, bookID, comment, rating) => dispatch => {
+export const addComment = (token, answerID, comment, rating) => dispatch => {
   axios.post(`/api/comment`, {
-    token: token,
-    bookID: bookID,
-    comment: comment,
-    rating: rating
+    token,
+    answerID,
+    comment,
+    rating
   }).then(res => {
       dispatch({
         type: ADD_COMMENT,

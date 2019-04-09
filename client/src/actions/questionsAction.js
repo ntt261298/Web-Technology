@@ -19,7 +19,7 @@ export const setLoading = () => {
   }
 }
 
-export const getBooks = () => dispatch => {
+export const getQuestions = () => dispatch => {
   dispatch(setLoading());
   axios.get('/api/questions')
     .then(res =>
@@ -30,7 +30,7 @@ export const getBooks = () => dispatch => {
     )
 };
 
-export const getBook = (id) => dispatch => {
+export const getQuestion = (id) => dispatch => {
   axios.get(`/api/questions/detail/${id}`)
     .then(res => {
       console.log(res.data);

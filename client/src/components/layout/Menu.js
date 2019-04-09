@@ -1,7 +1,7 @@
 import React from 'react';
 import '../../style/menu.css';
 import { UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
-import { toggleLogin } from '../../actions/itemsAction';
+import { toggleLogin } from '../../actions/questionsAction';
 import { userLogout } from '../../actions/accountsAction';
 import { getSearchResults } from '../../actions/searchAction';
 import { connect } from 'react-redux';

@@ -1,6 +1,6 @@
 import React from 'react';
 import '../../style/nav.css';
-import { getCate } from '../../actions/itemsAction';
+import { getCate } from '../../actions/questionsAction';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 import { Link } from 'react-router-dom';
@@ -37,8 +37,6 @@ class Navs extends React.Component {
   }
 
   render() {
-    const cate = this.props.book.cate;
-    console.log(cate);
     return (
         <nav className="nav-bar">
           <div className={`menu-btn ${this.state.btn}`} onClick={this.showNav.bind(this)}>
@@ -57,16 +55,16 @@ class Navs extends React.Component {
                     </li>
                   ))
                 } */}
-                <li><a href="">Javascript</a></li>
-                <li><a href="">PHP</a></li>
-                <li><a href="">JAVA</a></li>
-                <li><a href="">C/C++</a></li>
-                <li><a href="">Python</a></li>
-                <li><a href="">Swift</a></li>
-                <li><a href="">C#</a></li>
-                <li><a href="">Go</a></li>
-                <li><a href="">Haskell</a></li>
-                <li><a href="">Assembly</a></li>
+                <li><a href="/">Javascript</a></li>
+                <li><a href="/">PHP</a></li>
+                <li><a href="/">JAVA</a></li>
+                <li><a href="/">C/C++</a></li>
+                <li><a href="/">Python</a></li>
+                <li><a href="/">Swift</a></li>
+                <li><a href="/">C#</a></li>
+                <li><a href="/">Go</a></li>
+                <li><a href="/">Haskell</a></li>
+                <li><a href="/">Assembly</a></li>
               </ul>
             </div>
             <div className={`price ${this.state.nav}`}>
@@ -79,19 +77,19 @@ class Navs extends React.Component {
               </div>
               <ul>
                 <li>
-                  <a href={`/search/price/00-10`}>NodeJs</a>
+                  <a href={`/`}>NodeJs</a>
                 </li>
                 <li>
-                  <a href={`/search/price/10-20`}>ReactJs</a>
+                  <a href={`/`}>ReactJs</a>
                 </li>
                 <li>
-                  <a href={`/search/price/20-30`}>MongoDB</a>
+                  <a href={`/`}>MongoDB</a>
                 </li>
                 <li>
-                  <a href={`/search/price/20-30`}>Git</a>
+                  <a href={`/`}>Git</a>
                 </li>
                 <li>
-                  <a href={`/search/price/20-30`}>Webpack</a>
+                  <a href={`/`}>Webpack</a>
                 </li>
               </ul>
             </div>
@@ -127,7 +125,7 @@ Navs.propTypes = {
 }
 
 const mapStateToProps = state => ({
-  book: state.book
+  question: state.question
 })
 
 export default connect(mapStateToProps, { getCate })(Navs);
