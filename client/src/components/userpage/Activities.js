@@ -13,7 +13,7 @@ class Activities extends React.Component {
     const allItems  = this.props.account;
     console.log(allItems);
     // if (isLoading) return <div className='loading'><Loading /></div>;
-    if(allItems.history.length === 0) return <h2>You have no activity...</h2>;
+    // if(allItems.history.length === 0) return <h2>You have no activity...</h2>;
     return (
         <div className="container-mini">
           <div className="cart">

@@ -19,12 +19,6 @@ const userSignin = require('./routes/api/userSignin.js');
 const userLogout = require('./routes/api/userLogout.js');
 const userInfor = require('./routes/api/userInfor.js');
 
-
-const admin = require('./routes/admin/verify.js');
-const cate = require('./routes/admin/category');
-const book = require('./routes/admin/book');
-const cart = require('./routes/admin/cart');
-
 const app = express();
 
 // View engine setup
@@ -86,11 +80,6 @@ app.use('/api/user', userInfor);
 app.use('/api/search', search);
 app.use('/uploads', express.static('public/uploads'));
 app.use(express.static('public'));
-// Admin routes
-app.use('/admin', admin);
-app.use('/admin/category', cate);
-app.use('/admin/product', book);
-app.use('/admin/cart', cart);
 
 // Serve static assets if in production
 if(process.env.NODE_ENV === 'production') {

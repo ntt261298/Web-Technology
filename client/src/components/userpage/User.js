@@ -139,7 +139,7 @@ class User extends React.Component {
                     </div>
                     <div></div>
                   </React.Fragment>
-                ) : <h2 style={{wordWrap: 'normal', marginTop:'30px', gridColumn: '3/9'}}>You have not bought something yet</h2> }
+                ) : <h2 style={{wordWrap: 'normal', marginTop:'30px', gridColumn: '3/9'}}>You have no activity</h2> }
                 <div class="merged-row-1" style={{gridRow: '2/5'}}>
                     <a class="prf-navbar" style={{marginTop: '30px' }} onClick={this.changePage.bind(this, 'information')}>
                         <img src="../image/baseline-person-24px-white.svg" style={{paddingRight: '20px'}}/>
