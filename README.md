@@ -1,2 +1,2 @@
-# Web_ban_sach
-Shopping app using MERN Stack
+# Stack Over Flow Mini
+Social network of programmer
