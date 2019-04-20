@@ -1,6 +1,6 @@
 import React from 'react';
-import { Card, Button, CardImg, CardTitle, CardText, CardDeck,
- CardSubtitle, CardBody } from 'reactstrap';
+//import { Card, Button, CardImg, CardTitle, CardText, CardDeck,
+// CardSubtitle, CardBody } from 'reactstrap';
 import { connect } from 'react-redux';
 import { getSearchResults } from '../../actions/searchAction';
 // import { addToCart} from '../actions/cartAction';
