@@ -6,8 +6,8 @@ import homePage from './components/homePage.js';
 import detailPage from './components/detailPage.js';
 import searchPage from './components/searchPage.js';
 import userPage from './components/userPage.js';
+import askQuestionPage from './components/askQuestionPage.js';
 import resetPage from './components/resetPage.js';
-import {addQuestion} from './components/userpage/AddQuestion';
 import {Redirect, BrowserRouter as Router} from 'react-router-dom';
 import Route from 'react-router-dom/Route';
 import { toggleLogin } from './actions/questionsAction';
@@ -18,7 +18,7 @@ const PrivateRoute = ({ component: Component, token, ...rest }) => (
   <Route {...rest} render={(props) =>
     (
       !token
-        ? <Redirect to="/cart"/>
+        ? <Redirect to="/"/>
         : <Component {...props} />
     )
   } />
@@ -31,12 +31,16 @@ class App extends Component {
         <div className="App">
           <Route path="/" exact component={homePage} />
           <Route path="/detail/:id" exact component={detailPage}/>
-          <Route path="/addQuestion" exact component={addQuestion}/>
           <Route path="/search/:type/:name" exact component={searchPage}/>
           <Route path="/reset/:token" exact component={resetPage}/>
            <PrivateRoute
              path='/user'
              exact component={userPage}
+             token={this.props.account.token}
+            />
+            <PrivateRoute
+             path='/askQuestion'
+             exact component={askQuestionPage}
              token={this.props.account.token}
             />
         </div>
