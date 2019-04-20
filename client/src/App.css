@@ -207,7 +207,7 @@ a {
   outline: none;
   opacity: 0;
 }
-.panel__box input[type="email"], .panel__box input[type="password"] {
+.panel__box input[type="email"], .panel__box input[type="password"], .panel__box input[type="text"] {
   margin-top: 10px;
   width: 100%;
   float: left;
