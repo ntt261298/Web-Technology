@@ -55,7 +55,7 @@ class BookList extends React.Component {
         <div className="head">
           <h2>Top Questions</h2>
           <button className="ask-question" >
-            <a href="/addQuestion" >
+            <a href="/askQuestion" >
                 Ask Question
             </a>
           </button>

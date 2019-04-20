@@ -12,8 +12,11 @@ import {
     ModalBody,
     ModalFooter
   } from "reactstrap";
+import { connect } from 'react-redux';
+import { PropTypes } from 'prop-types';
 
-export class addQuestion extends React.Component {
+
+class AddQuestion extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -122,3 +125,5 @@ export class addQuestion extends React.Component {
     );
   }
 }
+
+export default connect(null, null)(AddQuestion);
