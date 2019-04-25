@@ -1,17 +1,17 @@
 import React from "react";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import {
-    Button,
-    Form,
-    FormGroup,
-    Label,
-    Input,
-    Col,
-    Modal,
-    ModalHeader,
-    ModalBody,
-    ModalFooter
-  } from "reactstrap";
+  Button,
+  Form,
+  FormGroup,
+  Label,
+  Input,
+  Col,
+  Modal,
+  ModalHeader,
+  ModalBody,
+  ModalFooter
+} from "reactstrap";
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 
@@ -24,7 +24,7 @@ class AddQuestion extends React.Component {
       isLoading: false,
       text: "",
       Content: null,
-      
+
     };
 
     this.toggle = this.toggle.bind(this);
@@ -51,7 +51,7 @@ class AddQuestion extends React.Component {
       method: "POST",
       body: JSON.stringify({
         Content: this.state.Content,
-        
+
       })
     })
       .then(response => response.json())
@@ -75,22 +75,50 @@ class AddQuestion extends React.Component {
   render() {
     return (
       <div>
-        <h2>
-          <center>Thêm Câu hỏi</center>
-        </h2>
+        <br />
+        <h3>
+          <center>Hãy cho chúng tôi biết chi tiết về câu hỏi của bạn</center>
+        </h3>
+        <h5>
+          <center>Mô tả chính xác và chi tiết sẽ giúp mọi người dễ dàng tìm thấy và giải quyết vấn đề của bạn</center>
+        </h5>
+        <hr />
+        <br />
         <Form>
           <FormGroup>
             <Col sm="12" md={{ size: 8, offset: 2 }}>
-              <Label for="content">Nội dung câu hỏi</Label>
-              <Input
-                type="textarea"
-                id="Content"
-                name="Content"
-                onChange={event => this.onChange(event)}
-              />
+              <div className="row">
+                <label htmlFor="title">Tiêu đề <span className="req">*</span></label><br />
+                <input type="text" name="title" id="title" className="txt" tabIndex={1} required onChange={event => this.onChange(event)} />
+              </div>
+              <hr />
+              <div className="row">
+                <label htmlFor="problem">Vấn đề bạn gặp phải<span className="req">*</span></label><br />
+                <input type="text" name="problem" id="problem" className="txt" tabIndex={2} required onChange={event => this.onChange(event)}/>
+              </div>
+              <hr />
+
+              <div className="row">
+                <label htmlFor="language">Ngôn ngữ<span className="req">*</span></label><br />
+                <select name="language" id="language" className="txt" tabIndex={3} onChange={event => this.onChange(event)}>
+                  <option value="java">Java</option>
+                  <option value="javascript">Javascript</option>
+                  <option value="php">Php</option>
+                  <option value="c">C</option>
+                </select>
+              </div>
+              <hr />
+
+              <div className="row">
+                <label htmlFor="code">Code </label>
+                <textarea name="code" id="code" className="txtarea" tabIndex={4} required defaultValue={""} onChange={event => this.onChange(event)} />
+              </div>
+              <hr />
+
+
             </Col>
           </FormGroup>
-          
+
           <center>
             <Button
               className="delete-button"
@@ -98,7 +126,7 @@ class AddQuestion extends React.Component {
               onClick={this.toggle}
               style={{ marginBottom: "30px" }}
             >
-              Submit
+              Gửi câu hỏi
             </Button>
           </center>
           <Modal
@@ -111,7 +139,7 @@ class AddQuestion extends React.Component {
             <ModalBody>Bạn có muốn gửi câu hỏi không?</ModalBody>
             <ModalFooter>
               <Button color="primary" onClick={this.handleSubmit}>
-                <Link to="/"  style={{ color: "white" }}>
+                <Link to="/" style={{ color: "white" }}>
                   OK
                 </Link>
               </Button>{" "}

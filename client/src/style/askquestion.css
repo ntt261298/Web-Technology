@@ -1,3 +1,80 @@
 .ask-question-body {
     padding-top: 30px;
 }
+
+/* form styles */
+form label {
+  display: inline-block;
+  font-size: 1em;
+  font-weight: bold;
+  width: 100%;
+  padding: 6px 0;
+  color:white;
+  vertical-align: top;
+}
+form .req { color: #ca5354; }
+ 
+form .note {
+  font-size: 1.2em;
+  line-height: 1.33em;
+  font-weight: normal;
+  padding: 2px 7px;
+  margin-bottom: 10px;
+}
+       
+form .txt {
+  display: inline-block;
+  padding: 8px 9px;
+  padding-right: 30px;
+  width: 100%;
+  font-family: 'Oxygen', sans-serif;
+  font-size: 1em;
+  font-weight: normal;
+  color: #898989;
+  background-color: #f0f0f0;
+  background-position: 110% center;
+  background-repeat: no-repeat;
+  border: 1px solid #ccc;
+  text-shadow: 0 1px 0 rgba(255,255,255,0.75);
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  -webkit-box-shadow: 0 1px 2px rgba(25, 25, 25, 0.25) inset, -1px 1px #fff;
+  -moz-box-shadow: 0 1px 2px rgba(25, 25, 25, 0.25) inset, -1px 1px #fff;
+  box-shadow: 0 1px 2px rgba(25, 25, 25, 0.25) inset, -1px 1px #fff;
+  -webkit-transition: all 0.3s linear;
+  -moz-transition: all 0.3s linear;
+  transition: all 0.3s linear;
+}
+ 
+form .txtarea {
+  display: inline-block;
+  padding: 8px 11px;
+  padding-right: 30px;
+  width: 100%;
+  height: 500px;
+  font-family: 'Oxygen', sans-serif;
+  font-size: 0.8em;
+  font-weight: normal;
+  color: #898989;
+  background-color: #f0f0f0;
+  background-position: 110% 4%;
+  background-repeat: no-repeat;
+  border: 1px solid #ccc;
+  text-shadow: 0 1px 0 rgba(255,255,255,0.75);
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  -webkit-box-shadow: 0 1px 4px -1px #a8a8a8 inset;
+  -moz-box-shadow: 0 1px 4px -1px #a8a8a8 inset;
+  box-shadow: 0 1px 4px -1px #a8a8a8 inset;
+  -webkit-transition: all 0.3s linear;
+  -moz-transition: all 0.3s linear;
+  transition: all 0.3s linear;
+}
