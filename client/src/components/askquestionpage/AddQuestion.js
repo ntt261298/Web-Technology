@@ -77,10 +77,10 @@ class AddQuestion extends React.Component {
       <div>
         <br />
         <h3>
-          <center>Hãy cho chúng tôi biết chi tiết về câu hỏi của bạn</center>
+          <center>Tell us about your question</center>
         </h3>
         <h5>
-          <center>Mô tả chính xác và chi tiết sẽ giúp mọi người dễ dàng tìm thấy và giải quyết vấn đề của bạn</center>
+          <center>Your description gives people the information they need to help you answer your question.</center>
         </h5>
         <hr />
         <br />
@@ -88,18 +88,18 @@ class AddQuestion extends React.Component {
           <FormGroup>
             <Col sm="12" md={{ size: 8, offset: 2 }}>
               <div className="row">
-                <label htmlFor="title">Tiêu đề <span className="req">*</span></label><br />
+                <label htmlFor="title">Title <span className="req">*</span></label><br />
                 <input type="text" name="title" id="title" className="txt" tabIndex={1} required onChange={event => this.onChange(event)} />
               </div>
               <hr />
               <div className="row">
-                <label htmlFor="problem">Vấn đề bạn gặp phải<span className="req">*</span></label><br />
+                <label htmlFor="problem">Summarize the problem<span className="req">*</span></label><br />
                 <input type="text" name="problem" id="problem" className="txt" tabIndex={2} required onChange={event => this.onChange(event)}/>
               </div>
               <hr />
 
               <div className="row">
-                <label htmlFor="language">Ngôn ngữ<span className="req">*</span></label><br />
+                <label htmlFor="language">Programming language<span className="req">*</span></label><br />
                 <select name="language" id="language" className="txt" tabIndex={3} onChange={event => this.onChange(event)}>
                   <option value="java">Java</option>
                   <option value="javascript">Javascript</option>
@@ -110,7 +110,7 @@ class AddQuestion extends React.Component {
               <hr />
 
               <div className="row">
-                <label htmlFor="code">Code </label>
+                <label htmlFor="code">Show some code </label>
                 <textarea name="code" id="code" className="txtarea" tabIndex={4} required defaultValue={""} onChange={event => this.onChange(event)} />
               </div>
               <hr />
@@ -126,7 +126,7 @@ class AddQuestion extends React.Component {
               onClick={this.toggle}
               style={{ marginBottom: "30px" }}
             >
-              Gửi câu hỏi
+            Post Your Question
             </Button>
           </center>
           <Modal
@@ -136,7 +136,7 @@ class AddQuestion extends React.Component {
             className={this.props.className}
           >
             <ModalHeader toggle={this.toggle}>Note</ModalHeader>
-            <ModalBody>Bạn có muốn gửi câu hỏi không?</ModalBody>
+            <ModalBody>Are you sure you want to submit this question?</ModalBody>
             <ModalFooter>
               <Button color="primary" onClick={this.handleSubmit}>
                 <Link to="/" style={{ color: "white" }}>

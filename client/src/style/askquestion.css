@@ -9,7 +9,7 @@ form label {
   font-weight: bold;
   width: 100%;
   padding: 6px 0;
-  color:white;
+  color:black;
   vertical-align: top;
 }
 form .req { color: #ca5354; }
@@ -55,7 +55,7 @@ form .txtarea {
   padding: 8px 11px;
   padding-right: 30px;
   width: 100%;
-  height: 500px;
+  height: 350px;
   font-family: 'Oxygen', sans-serif;
   font-size: 0.8em;
   font-weight: normal;
@@ -77,4 +77,11 @@ form .txtarea {
   -webkit-transition: all 0.3s linear;
   -moz-transition: all 0.3s linear;
   transition: all 0.3s linear;
+}
+
+form .txt:hover, form .txtarea:hover{
+  box-shadow: 2px 0px 4px #00CB834D,
+  -2px 0px 4px #00CB834D,
+  0px 2px 4px #00CB834D,
+  0px -2px 4px #00CB834D;
 }

@@ -142,13 +142,13 @@ class User extends React.Component {
                 ) : <h2 style={{wordWrap: 'normal', marginTop:'30px', gridColumn: '3/9'}}>You have no activity</h2> }
                 <div class="merged-row-1" style={{gridRow: '2/5'}}>
                     <a class="prf-navbar" style={{marginTop: '30px' }} onClick={this.changePage.bind(this, 'information')}>
-                        <img src="../image/baseline-person-24px-white.svg" style={{paddingRight: '20px'}}/>
-                        Information
+                        <img src="../image/baseline-person-24px-white.svg" style={{border: '1px solid #ccc',background: '#3B86FF'}}/>
+                        &emsp;Information
                     </a>
 
                     <a class="prf-navbar" onClick={this.changePage.bind(this, 'history')}>
-                        <img src="../image/history.svg" style={{paddingRight: '20px'}}/>
-                        History
+                        <img src="../image/history.svg" style={{border: '1px solid #ccc',background: '#3B86FF'}}/>
+                        &emsp;History
                     </a>
 
                     {/* <a class="prf-navbar" href="library.html">
@@ -303,13 +303,13 @@ class User extends React.Component {
 
         <div class="merged-row-1">
             <a class="prf-navbar" style={{marginTop: '30px' }} onClick={this.changePage.bind(this, 'information')}>
-                <img src="../image/baseline-person-24px-white.svg" style={{paddingRight: '20px'}}/>
-                Information
+                <img src="../image/baseline-person-24px-white.svg" style={{border: '1px solid #ccc',background: '#3B86FF'}}/>
+                &emsp;Information
             </a>
 
             <a class="prf-navbar" onClick={this.changePage.bind(this, 'history')}>
-                <img src="../image/history.svg" style={{paddingRight: '20px'}}/>
-                History
+                <img src="../image/history.svg" style={{border: '1px solid #ccc',background: '#3B86FF'}}/>
+                &emsp;History
             </a>
 
             {/* <a class="prf-navbar" href="library.html">
