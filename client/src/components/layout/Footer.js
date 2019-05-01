@@ -15,14 +15,6 @@ export default class Footer extends React.Component {
         <h3>Open</h3>
         <p>Every day from 08:00 - 18:00</p>
       </div>
-      <div className="payment">
-        <h3>Payment</h3>
-        <img src="https://intense-temple-58166.herokuapp.com/image/icon visa.svg" alt=""/>
-        <img src="https://intense-temple-58166.herokuapp.com/image/credit-card.svg" alt=""/>
-        <img src="https://intense-temple-58166.herokuapp.com/image/bitcoin.svg" alt=""/>
-        <img src="https://intense-temple-58166.herokuapp.com/image/cast-multiple.svg" alt=""/>
-        <img src="https://intense-temple-58166.herokuapp.com/image/internet banking account.svg" alt=""/>
-      </div>
       <div className="socials">
         <h3>Socials</h3>
         <img src="https://intense-temple-58166.herokuapp.com/image/facebook.svg" alt=""/>

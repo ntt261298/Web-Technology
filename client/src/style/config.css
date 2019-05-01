@@ -1,6 +1,6 @@
 /* CSS variables */
 :root {
-  --primary: #201e1f;
+  --primary: #f7f7f7;
   --gray: #3e3e3e;
   --light: #fefffe;
   --blue: hsl(205, 100%, 43%);
@@ -15,11 +15,12 @@ html {
 }
 main {
   min-height: calc(100vh - 200px);
-  color: var(--light);
+  color: #000;
 }
 body {
   z-index: -1;
   background: var(--primary);
+  color: #000;
   margin: 0;
 }
 
@@ -37,6 +38,6 @@ ul {
   padding-left: 0px;
 }
 
-.panel__box input]{
+.panel__box input{
 
 }

@@ -46,7 +46,7 @@ class Navs extends React.Component {
           </div>
           <div className={`nav-content ${this.state.nav}`}>
             <div className={`category ${this.state.nav}`} >
-              <h2>PROGRAMMING LANGUAGES</h2>
+              <h3>PROGRAMMING LANGUAGES</h3>
               <ul>
                 {/* {
                   cate.map(({_id, name}) => (
@@ -68,7 +68,7 @@ class Navs extends React.Component {
               </ul>
             </div>
             <div className={`price ${this.state.nav}`}>
-              <h2>TECHNOLOGIES</h2>
+              <h3>TECHNOLOGIES</h3>
               <div className="price-bar">
                 <div className="bar">
                   <div className="circle-price circle-price-1"></div>
@@ -94,7 +94,7 @@ class Navs extends React.Component {
               </ul>
             </div>
             <div className={`${this.state.nav}`}>
-              <h2>RATING</h2>
+              <h3>RATING</h3>
               <ul>
                 <li>
                   <a href={`/search/rating/1`}>{this.renderStarStatic(1)}</a>
