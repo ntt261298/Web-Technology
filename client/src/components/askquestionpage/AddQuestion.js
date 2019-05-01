@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import toastr from 'toastr';
 import {
   Button,
   Form,
@@ -14,6 +15,7 @@ import {
 } from "reactstrap";
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
+import { addQuestion } from '../../actions/questionsAction';
 
 
 class AddQuestion extends React.Component {
@@ -21,13 +23,22 @@ class AddQuestion extends React.Component {
     super(props);
     this.state = {
       modal: false,
-      isLoading: false,
-      text: "",
+      text: '',
       Content: null,
-
+      code: '',
+      title: '',
+      problem: '',
+      language: 'java'
     };
 
     this.toggle = this.toggle.bind(this);
+  }
+
+  componentDidUpdate(prevProps) {
+    // Display err when server can't add question
+    if (prevProps.error !== this.props.error) {
+      toastr.error('Fail to ask question')
+    }
   }
 
   toggle() {
@@ -37,30 +48,15 @@ class AddQuestion extends React.Component {
   }
 
   handleSubmit = event => {
-    //event.preventDefault();
-    window.location.reload();
-    const { text } = this.state;
-    this.fetchPost(text);
-  };
+    const { title, problem, code, language } = this.state;
+    if(!title.trim()) {
+      toastr.error('Title must not be empty');
+    };
+    if(!problem.trim()) {
+      toastr.error('Problem must not be empty');
+    };
 
-  fetchPost = () => {
-    this.setState({
-      isLoading: true
-    });
-    fetch("http://192.168.1.16:8080/api/home/law/insert", {
-      method: "POST",
-      body: JSON.stringify({
-        Content: this.state.Content,
-
-      })
-    })
-      .then(response => response.json())
-      .then(response => {
-        this.setState({
-          data: response,
-          isLoading: false
-        });
-      });
+    this.props.addQuestion(title, problem, code, language, this.props.token);
   };
 
   onChange = event => {
@@ -154,4 +150,9 @@ class AddQuestion extends React.Component {
   }
 }
 
-export default connect(null, null)(AddQuestion);
+const mapStateToProps = state => ({
+  error: state.question.error,
+  token: state.account.token
+})
+
+export default connect(mapStateToProps, { addQuestion })(AddQuestion);

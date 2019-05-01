@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { SET_LOADING, TOGGLE_LOGIN, TOGGLE_FORGET, GET_QUESTIONS, GET_QUESTION, GET_CATE } from './types';
+import { SET_LOADING, TOGGLE_LOGIN, TOGGLE_FORGET, GET_QUESTIONS, GET_QUESTION, ADD_QUESTION, GET_CATE } from './types';
 
 export const toggleLogin = () => {
   return {
@@ -36,6 +36,20 @@ export const getQuestion = (id) => dispatch => {
       console.log(res.data);
       dispatch({
         type: GET_QUESTION,
+        payload: res.data
+      })
+    }
+    )
+};
+
+export const addQuestion = (title, problem, code, category, token) => dispatch => {
+  axios.post(`/api/questions`, {
+    title, problem, code, category, token
+  })
+    .then(res => {
+      console.log(res.data);
+      dispatch({
+        type: ADD_QUESTION,
         payload: res.data
       })
     }

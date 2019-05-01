@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import { unregister } from './registerServiceWorker';
 import { Provider } from 'react-redux';
+import 'toastr/build/toastr.css';
 import store from './store';
 
 
