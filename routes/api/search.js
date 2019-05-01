@@ -10,9 +10,9 @@ const Question = require('../../models/Question.js');
 router.get('/', (req, res) => {
   const question = req.query.question;
   const type = req.query.type;
-  if(type === 'name') {
+  if(type === 'title') {
     Question.find({
-      name: {
+      title: {
         $regex: new RegExp(question)
       }
     }, {}, (err, data) => {
