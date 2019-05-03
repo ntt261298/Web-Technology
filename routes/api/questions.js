@@ -28,7 +28,7 @@ const upload = multer({
   fileFilter: fileFilter
 });
 
-// Item Model
+const UserSession = require('../../models/UserSession.js');
 const Question = require('../../models/Question.js');
 const Cate = require('../../models/Cate.js');
 
@@ -38,6 +38,35 @@ const Cate = require('../../models/Cate.js');
 router.get('/', (req, res) => {
   Question.find()
     .then(questions => res.json(questions))
+});
+
+// @route POST api/questions
+// desc POST a question
+// @access Public
+router.post('/', (req, res) => {
+  UserSession.findById(req.body.token)
+    .then(session => {
+      const question = new Question({
+        userId: session.userId,
+        title: req.body.title,
+        problem: req.body.problem,
+        category: req.body.category,
+        code: req.body.code,
+      });
+      question.save()
+        .then(question => {
+          res.send({
+            success: true,
+            message: 'Ask question successfully'
+          })
+        })
+        .catch(err => {
+          res.send({
+            success: false,
+            message: err
+          })
+        })
+    });
 });
 
 // @route GET api/questions/cate

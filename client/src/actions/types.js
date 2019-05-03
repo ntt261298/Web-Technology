@@ -3,6 +3,7 @@ export const TOGGLE_LOGIN = 'TOGGLE_LOGIN';
 export const TOGGLE_FORGET = 'TOGGLE_FORGET';
 export const GET_QUESTIONS = 'GET_QUESTIONS';
 export const GET_QUESTION = 'GET_QUESTION';
+export const ADD_QUESTION = 'ADD_QUESTION';
 export const GET_CATE = 'GET_CATE';
 export const VERIFY_TOKEN = 'VERIFY_TOKEN';
 export const USER_LOGIN = 'USER_LOGIN';

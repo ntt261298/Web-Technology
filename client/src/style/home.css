@@ -1,6 +1,6 @@
 /* body style */
 .home-body {
-  color: var(--light);
+  color: #000;
   padding: 0 6rem;
   display: grid;
   grid-gap: 20px;
@@ -33,21 +33,22 @@
 }
 .filter>ul li {
   float: left;
-  width: 100px;
+  width: 90px;
   text-align: center;
-  border: 1px solid #fff;
+  border: 1px solid var(--gray);
 }
 .filter> ul li:first-child {
-  border-radius: 2px 0 0 2px;
-  background: #444;
+  border-radius: 3px 0 0 3px;
+  background: var(--blue);
+  color: #fff;
 }
 .filter> ul li:last-child {
-  border-radius: 0 2px 2px 0;
+  border-radius: 0 3px 3px 0;
 }
 .ask-question {
   align-self: center;
   background: var(--blue);
-  border-radius: 3px;
+  border-radius: 5px;
   border-width: 1px;
   line-height: 15px;
   font-size: 1rem;
@@ -57,7 +58,7 @@
 }
 
 .questions {
-  border-top: .5px solid #fff;
+  border-top: .5px solid var(--gray);
   padding: 10px 0;
   margin-top: 20px;
   display: grid;
@@ -81,7 +82,7 @@
   font-size: 1.2rem;
 }
 .cate-question {
-  border: 1px solid #fff;
+  border: 1px solid var(--gray);
   border-radius: 3px;
   width: 80px;
   text-align: center;

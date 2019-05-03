@@ -38,7 +38,7 @@ class Menu extends React.Component {
         search: val,
         searching: true
       });
-      this.props.getSearchResults('name', val);
+      this.props.getSearchResults('title', val);
     }
   }
 
@@ -60,6 +60,7 @@ class Menu extends React.Component {
     const token = this.props.account.token;
     const searching = this.state.searching;
     const results = this.props.search.results;
+    console.log(results);
     return (
       <div>
         <div className="header">
@@ -69,8 +70,7 @@ class Menu extends React.Component {
         <div className="menu">
           <div className="logo">
             <Link to={`/`}>
-              {/* <img src="../../image/logo.svg" className="logo-img" alt="" /> */}
-              <h2>Group 22</h2>
+              <img src="https://images.cooltext.com/5284667.png" className="logo-img" alt="" />
             </Link>
           </div>
           <div className="search">
@@ -80,9 +80,9 @@ class Menu extends React.Component {
           <div className="search-results">
           {
             searching ? (
-              results.map(({_id, name}) => (
-                <a href={`/search/name/${name}`}>
-                    <p  key={_id}>{name}</p>
+              results.map(({_id, title}) => (
+                <a href={`/search/name/${title}`}>
+                    <p  key={_id}>{title}</p>
                 </a>
               ))
             ) : null

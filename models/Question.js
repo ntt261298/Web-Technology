@@ -4,11 +4,15 @@ const Schema = mongoose.Schema;
 
 // Create Schema
 const QuestionSchema = new Schema({
+  userId: {
+    type: String,
+    required: true
+  },
   title: {
     type: String,
     required: true
   },
-  content: {
+  problem: {
     type: String,
     required: true
   },
@@ -27,6 +31,9 @@ const QuestionSchema = new Schema({
   views: {
     type: Number,
     default: 0
+  },
+  code: {
+    type: String
   }
 });
 

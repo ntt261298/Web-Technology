@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import toastr from 'toastr';
 import {
   Button,
   Form,
@@ -14,6 +15,7 @@ import {
 } from "reactstrap";
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
+import { addQuestion } from '../../actions/questionsAction';
 
 
 class AddQuestion extends React.Component {
@@ -21,13 +23,22 @@ class AddQuestion extends React.Component {
     super(props);
     this.state = {
       modal: false,
-      isLoading: false,
-      text: "",
+      text: '',
       Content: null,
-
+      code: '',
+      title: '',
+      problem: '',
+      language: 'java'
     };
 
     this.toggle = this.toggle.bind(this);
+  }
+
+  componentDidUpdate(prevProps) {
+    // Display err when server can't add question
+    if (prevProps.error !== this.props.error) {
+      toastr.error('Fail to ask question')
+    }
   }
 
   toggle() {
@@ -37,30 +48,15 @@ class AddQuestion extends React.Component {
   }
 
   handleSubmit = event => {
-    //event.preventDefault();
-    window.location.reload();
-    const { text } = this.state;
-    this.fetchPost(text);
-  };
+    const { title, problem, code, language } = this.state;
+    if(!title.trim()) {
+      toastr.error('Title must not be empty');
+    };
+    if(!problem.trim()) {
+      toastr.error('Problem must not be empty');
+    };
 
-  fetchPost = () => {
-    this.setState({
-      isLoading: true
-    });
-    fetch("http://192.168.1.16:8080/api/home/law/insert", {
-      method: "POST",
-      body: JSON.stringify({
-        Content: this.state.Content,
-
-      })
-    })
-      .then(response => response.json())
-      .then(response => {
-        this.setState({
-          data: response,
-          isLoading: false
-        });
-      });
+    this.props.addQuestion(title, problem, code, language, this.props.token);
   };
 
   onChange = event => {
@@ -77,10 +73,10 @@ class AddQuestion extends React.Component {
       <div>
         <br />
         <h3>
-          <center>Hãy cho chúng tôi biết chi tiết về câu hỏi của bạn</center>
+          <center>Tell us about your question</center>
         </h3>
         <h5>
-          <center>Mô tả chính xác và chi tiết sẽ giúp mọi người dễ dàng tìm thấy và giải quyết vấn đề của bạn</center>
+          <center>Your description gives people the information they need to help you answer your question.</center>
         </h5>
         <hr />
         <br />
@@ -88,18 +84,18 @@ class AddQuestion extends React.Component {
           <FormGroup>
             <Col sm="12" md={{ size: 8, offset: 2 }}>
               <div className="row">
-                <label htmlFor="title">Tiêu đề <span className="req">*</span></label><br />
+                <label htmlFor="title">Title <span className="req">*</span></label><br />
                 <input type="text" name="title" id="title" className="txt" tabIndex={1} required onChange={event => this.onChange(event)} />
               </div>
               <hr />
               <div className="row">
-                <label htmlFor="problem">Vấn đề bạn gặp phải<span className="req">*</span></label><br />
+                <label htmlFor="problem">Summarize the problem<span className="req">*</span></label><br />
                 <input type="text" name="problem" id="problem" className="txt" tabIndex={2} required onChange={event => this.onChange(event)}/>
               </div>
               <hr />
 
               <div className="row">
-                <label htmlFor="language">Ngôn ngữ<span className="req">*</span></label><br />
+                <label htmlFor="language">Programming language<span className="req">*</span></label><br />
                 <select name="language" id="language" className="txt" tabIndex={3} onChange={event => this.onChange(event)}>
                   <option value="java">Java</option>
                   <option value="javascript">Javascript</option>
@@ -110,8 +106,19 @@ class AddQuestion extends React.Component {
               <hr />
 
               <div className="row">
-                <label htmlFor="code">Code </label>
-                <textarea name="code" id="code" className="txtarea" tabIndex={4} required defaultValue={""} onChange={event => this.onChange(event)} />
+                <label htmlFor="tech">Technology</label><br />
+                <select name="tech" id="tech" className="txt" tabIndex={4} onChange={event => this.onChange(event)}>
+                  <option value="mysql ">MySQL</option>
+                  <option value="nosql">NoSQL</option>
+                  <option value="sqlserver">SQL Server</option>
+                  <option value="graphdb">GraphDB</option>
+                </select>
+              </div>
+              <hr />
+
+              <div className="row">
+                <label htmlFor="code">Show some code </label>
+                <textarea name="code" id="code" className="txtarea" tabIndex={5} required defaultValue={""} onChange={event => this.onChange(event)} />
               </div>
               <hr />
 
@@ -126,7 +133,7 @@ class AddQuestion extends React.Component {
               onClick={this.toggle}
               style={{ marginBottom: "30px" }}
             >
-              Gửi câu hỏi
+            Post Your Question
             </Button>
           </center>
           <Modal
@@ -136,7 +143,7 @@ class AddQuestion extends React.Component {
             className={this.props.className}
           >
             <ModalHeader toggle={this.toggle}>Note</ModalHeader>
-            <ModalBody>Bạn có muốn gửi câu hỏi không?</ModalBody>
+            <ModalBody>Are you sure you want to submit this question?</ModalBody>
             <ModalFooter>
               <Button color="primary" onClick={this.handleSubmit}>
                 <Link to="/" style={{ color: "white" }}>
@@ -154,4 +161,9 @@ class AddQuestion extends React.Component {
   }
 }
 
-export default connect(null, null)(AddQuestion);
+const mapStateToProps = state => ({
+  error: state.question.error,
+  token: state.account.token
+})
+
+export default connect(mapStateToProps, { addQuestion })(AddQuestion);
