@@ -5,6 +5,7 @@ import '../style/detail.css';
 import Menu from './layout/Menu.js';
 import Navs from './layout/Navs.js';
 import Login from './layout/Login.js';
+import Detail from './detailPage/Detail'
 import ForgetPwd from './layout/ForgetPwd.js';
 import Footer from './layout/Footer.js';
 
@@ -19,6 +20,7 @@ export default class detailPage extends React.Component {
             <Login />
             <ForgetPwd />
             <Navs />
+            <Detail />
         </main>
         <footer>
           <Footer />
