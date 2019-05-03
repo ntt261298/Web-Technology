@@ -106,8 +106,19 @@ class AddQuestion extends React.Component {
               <hr />
 
               <div className="row">
+                <label htmlFor="tech">Technology</label><br />
+                <select name="tech" id="tech" className="txt" tabIndex={4} onChange={event => this.onChange(event)}>
+                  <option value="mysql ">MySQL</option>
+                  <option value="nosql">NoSQL</option>
+                  <option value="sqlserver">SQL Server</option>
+                  <option value="graphdb">GraphDB</option>
+                </select>
+              </div>
+              <hr />
+
+              <div className="row">
                 <label htmlFor="code">Show some code </label>
-                <textarea name="code" id="code" className="txtarea" tabIndex={4} required defaultValue={""} onChange={event => this.onChange(event)} />
+                <textarea name="code" id="code" className="txtarea" tabIndex={5} required defaultValue={""} onChange={event => this.onChange(event)} />
               </div>
               <hr />
 
