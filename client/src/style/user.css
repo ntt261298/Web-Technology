@@ -1,11 +1,10 @@
 .htr-grid-container {
     margin: 30px 0;
     display: grid;
-    grid-template-columns: 8.33% 20.83% 8.33% 10% auto 8.33% 10% 8.33%;
-    grid-template-rows: 100px 170px 170px 170px auto;
+    grid-template-columns: 8.33% 20.83% auto 9.5% 9.5% 9.5% 9.5% 8.33%;
+    grid-template-rows: 100px 130px 130px 130px auto;
     grid-gap: 0px;
 }
-
 
 .htr-properties {
     font-size: 20px;
@@ -28,10 +27,10 @@
 
 .htr-properties-value {
     font-size: 18px;
-    color: #bbbbbb;
     margin: 30px 0 0 0;
     width: 75%;
     height: 25px;
+    text-align: center;
 }
 
 

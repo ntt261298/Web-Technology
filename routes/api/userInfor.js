@@ -1,10 +1,11 @@
 const express = require('express');
 const router = express.Router();
 
-// UserSession Model
 const UserSession = require('../../models/UserSession.js');
-// User Model
 const User = require('../../models/User.js');
+const Question = require('../../models/Question');
+const Answer = require('../../models/Answer');
+
 
 // @route GET api/user/infor
 // desc GET All userItem
@@ -90,20 +91,37 @@ router.post('/infor', (req, res) => {
         })
     })
 });
-// @route GET api/user/history
-// desc GET All userItem
-// @access Public
-// router.get('/history', (req, res) => {
-//   // Get the token
-//   const { query } = req;
-//   const { token } = query;
-//   //?token=test
 
-//   UserSession.findById(token)
-//     .then(session => {
-//       Transaction.find({ 'usernameID': session.userId })
-//         .then(transactions => res.json(transactions))
-//     })
-// });
+// @route GET api/user/history/question
+// desc GET All userQuestion
+// @access Public
+router.get('/history/question', (req, res) => {
+  // Get the token
+  const { query } = req;
+  const { token } = query;
+  //?token=test
+
+  UserSession.findById(token)
+    .then(session => {
+      Question.find({ 'userId': session.userId })
+        .then(questions => res.json(questions))
+    })
+});
+
+// @route GET api/user/history/answer
+// desc GET All userAnswer
+// @access Public
+router.get('/history/answer', (req, res) => {
+  // Get the token
+  const { query } = req;
+  const { token } = query;
+  //?token=test
+
+  UserSession.findById(token)
+    .then(session => {
+      Answer.find({ 'userId': session.userId })
+        .then(answers => res.json(answers))
+    })
+});
 
 module.exports = router;

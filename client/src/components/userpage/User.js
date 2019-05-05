@@ -1,5 +1,5 @@
 import React from 'react';
-import { getInfor, getActivities, updateUserInfor } from '../../actions/accountsAction.js';
+import { getInfor, getUserQuestions, getUserAnswers, updateUserInfor } from '../../actions/accountsAction.js';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 import currency from '../../helpers/currency.js';
@@ -21,7 +21,8 @@ class User extends React.Component {
       orderId: ''
   }
   componentDidMount() {
-    this.props.getActivities(this.props.account.token);
+    this.props.getUserQuestions(this.props.account.token);
+    this.props.getUserAnswers(this.props.account.token);
     this.props.getInfor(this.props.account.token);
     setTimeout(() => {
       const infor = this.props.account.infor;
@@ -105,6 +106,7 @@ class User extends React.Component {
 
   render() {
     const allItems  = this.props.account;
+    console.log('dsa: ' + JSON.stringify(allItems));
     const userInfor = this.props.account.infor;
     const message = this.props.account.updateErr;
     const page = this.state.page;
@@ -120,22 +122,22 @@ class User extends React.Component {
                     <img class="prf-avt" src="../image/account-circle.svg" />
                     <p class="prf-p">{userInfor.name}</p>
                 </div>
-                { allItems.history.length ? (
+                { allItems.question.length ? (
                   <React.Fragment>
                     <div class="htr-properties">
-                        Order ID
+                        Question ID
                     </div>
                     <div class="htr-properties">
-                        Date
+                        Created at
                     </div>
                     <div class="htr-properties">
-                        Products
-                    </div>
-                    <div class="htr-properties">
-                        Price
+                        Views 
                     </div>
                     <div class="htr-properties" >
-                        Status
+                        Answers
+                    </div>
+                    <div class="htr-properties" >
+                        Rating
                     </div>
                     <div></div>
                   </React.Fragment>
@@ -156,25 +158,23 @@ class User extends React.Component {
                         Library
                     </a> */}
                 </div>
-                { allItems.history.length ? (
-                  allItems.history.map((order, index) => (
+                { allItems.question.length ? (
+                  allItems.question.map((question, index) => (
                     <React.Fragment>
-                      <a class="htr-order-id" onClick={this.viewDetail.bind(this, order._id)}>
-                          {order._id}
+                      <a class="htr-order-id" onClick={this.viewDetail.bind(this, question._id)}>
+                          {question._id}
                       </a>
                       <div class="htr-properties-value">
-                          {this.convertDate(order.orderDate)}
+                          {this.convertDate(question.created_at)}
                       </div>
                       <div class="htr-properties-value">
-                          {order.cart.map((item, index) => (
-                            <p>{item.name}</p>
-                          ))}
+                          {question.views}
                       </div>
                       <div class="htr-properties-value">
-                          {currency(total(order.cart))}
+                          {question.answers}
                       </div>
                       <div class="htr-properties-value" >
-                          {order.status}
+                          {question.rating}
                       </div>
                       <div></div>
                     </React.Fragment>
@@ -549,7 +549,8 @@ class User extends React.Component {
 };
 
 User.propTypes = {
-  getActivities: PropTypes.func.isRequired,
+  getUserQuestions: PropTypes.func.isRequired,
+  getUserAnswers: PropTypes.func.isRequired,
   getInfor: PropTypes.func.isRequired,
   updateUserInfor: PropTypes.func.isRequired
 }
@@ -558,4 +559,4 @@ const mapStateToProps = state => ({
   account: state.account
 })
 
-export default connect(mapStateToProps, {getInfor, getActivities, updateUserInfor})(User);
+export default connect(mapStateToProps, {getInfor, getUserQuestions, getUserAnswers, updateUserInfor})(User);

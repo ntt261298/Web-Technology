@@ -1,11 +1,12 @@
-import { VERIFY_TOKEN, USER_LOGIN, USER_SIGNUP, USER_LOGOUT, USER_HISTORY, USER_INFOR, USER_UPDATE, SEND_MAIL, RESET_PASSWORD } from '../actions/types.js';
+import { VERIFY_TOKEN, USER_LOGIN, USER_SIGNUP, USER_LOGOUT, USER_QUESTION, USER_ANSWER, USER_INFOR, USER_UPDATE, SEND_MAIL, RESET_PASSWORD } from '../actions/types.js';
 import { saveState } from '../helpers/localStorage';
 
 const initialState = {
   token: '',
   signupErr: '',
   loginErr: '',
-  history: [],
+  question: [],
+  answer: [],
   resetErr: '',
   emailErr: '',
   name: '',
@@ -49,10 +50,15 @@ export default function(state = initialState, action) {
           loginErr: '',
           signupErr: ''
         };
-    case USER_HISTORY:
+    case USER_QUESTION:
         return {
           ...state,
-          history: action.payload
+          question: action.payload
+        };
+    case USER_ANSWER:
+        return {
+          ...state,
+          answer: action.payload
         };
     case USER_INFOR:
         return {

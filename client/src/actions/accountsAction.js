@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { VERIFY_TOKEN, USER_LOGIN, USER_SIGNUP, USER_LOGOUT, USER_HISTORY, USER_INFOR, USER_UPDATE, SEND_MAIL, RESET_PASSWORD } from './types.js';
+import { VERIFY_TOKEN, USER_LOGIN, USER_SIGNUP, USER_LOGOUT, USER_QUESTION, USER_ANSWER, USER_INFOR, USER_UPDATE, SEND_MAIL, RESET_PASSWORD } from './types.js';
 import { loadState } from '../helpers/localStorage';
 
 export const verifyToken = () => dispatch => {
@@ -55,14 +55,25 @@ export const userLogout = token => dispatch => {
     })
 }
 
-export const getActivities = token => dispatch => {
-    axios.get(`/api/user/history?token=${token}`)
+export const getUserQuestions = token => dispatch => {
+    axios.get(`/api/user/history/question?token=${token}`)
     .then(res => {
+        console.log(res.data);
         dispatch({
-          type: USER_HISTORY,
+          type: USER_QUESTION,
           payload: res.data
         })
     })
+}
+
+export const getUserAnswers = token => dispatch => {
+  axios.get(`/api/user/history/answer?token=${token}`)
+  .then(res => {
+      dispatch({
+        type: USER_ANSWER,
+        payload: res.data
+      })
+  })
 }
 
 export const getInfor = token => dispatch => {

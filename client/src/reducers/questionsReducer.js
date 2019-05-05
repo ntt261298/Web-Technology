@@ -2,7 +2,7 @@ import { SET_LOADING, GET_QUESTIONS, GET_QUESTION, ADD_QUESTION, GET_CATE } from
 
 const initialState = {
   error: '',
-  quesions: [],
+  questions: [],
   question: [],
   loading: false,
   cate: []

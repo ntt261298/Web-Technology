@@ -22,11 +22,13 @@ export const setLoading = () => {
 export const getQuestions = () => dispatch => {
   dispatch(setLoading());
   axios.get('/api/questions')
-    .then(res =>
+    .then(res => {
+      console.log(res.data)
       dispatch({
         type: GET_QUESTIONS,
         payload: res.data
       })
+    }
     )
 };
 

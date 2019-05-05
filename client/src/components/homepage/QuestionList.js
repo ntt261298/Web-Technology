@@ -1,13 +1,11 @@
 import React from 'react';
-/*import { Card, Button, CardImg, CardTitle, CardText, CardDeck,
- CardSubtitle, CardBody } from 'reactstrap';*/
 import { connect } from 'react-redux';
 import { getQuestions} from '../../actions/questionsAction';
 import { PropTypes } from 'prop-types';
 
 import { Link } from 'react-router-dom';
 
-class BookList extends React.Component {
+class QuestionList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {      
@@ -17,25 +15,8 @@ class BookList extends React.Component {
     
   }
 
-  fetchAdmind = () => {
-    this.setState({
-      isLoading: true
-    });
-    fetch("http://192.168.1.16:8080/api/home/law/getall", {
-      method: "GET"
-    })
-      .then(response => response.json())
-      .then(response => {
-        console.log(response);
-        this.setState({
-          data: response,          
-          isLoading: false
-        });
-      });
-  };
   componentDidMount() {
-    this.fetchAdmind();
-    
+    this.props.getQuestions();
   }
 
   renderStar(rating) {
@@ -50,6 +31,7 @@ class BookList extends React.Component {
   }
 
   render() {
+    const { questions } = this.props.question;
     return (
       <div className="question-home">
         <div className="head">
@@ -74,33 +56,33 @@ class BookList extends React.Component {
               
           </div>
         )) } */}
-        {this.state.data.map((item) => (
-        <div className="questions question-1">
+        {questions.map((question, index) => (
+        <div className={`questions question-${index + 1}`}>
           <div className="info-question">
             <div className="rating">
-              <div>{item.rate}</div>
+              <div>{question.rating}</div>
               <div>rating</div>
             </div>
             <div className="answers">
-              <div>{item.answer}</div>
+              <div>{question.answers}</div>
               <div>answers</div>
             </div>
             <div className="views">
-              <div>{item.view}</div>
+              <div>{question.views}</div>
               <div>views</div>
             </div>
           </div>
           <div className="content-question">
             <div className="title-question">
-              {item.question}
+              {question.title}
             </div>
             <div className="cate-question">
-              {item.program}
+              {question.category}
             </div>
           </div>
         </div>
         ))}
-        <div className="questions question-1">
+        {/* <div className="questions question-1">
           <div className="info-question">
             <div className="rating">
               <div>4.5</div>
@@ -122,14 +104,14 @@ class BookList extends React.Component {
             <div className="cate-question">
               python
             </div>
-          </div>
-        </div>
+          </div> */}
+        {/* </div> */}
       </div>
     );
   };
 }
 
-BookList.propTypes = {
+QuestionList.propTypes = {
   getQuestions: PropTypes.func.isRequired,
 }
 
@@ -137,4 +119,4 @@ const mapStateToProps = state => ({
   question: state.question
 })
 
-export default connect(mapStateToProps, {getQuestions})(BookList);
+export default connect(mapStateToProps, {getQuestions})(QuestionList);

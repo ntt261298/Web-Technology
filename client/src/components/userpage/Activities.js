@@ -1,12 +1,13 @@
 import React from 'react';
-import { getActivities } from '../../actions/accountsAction.js';
+import { getUserQuestions, getUserAnswers } from '../../actions/accountsAction.js';
 import Item from './Item.js';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 
 class Activities extends React.Component {
   componentDidMount() {
-    this.props.getActivities(this.props.account.token);
+    this.props.getUserQuestions(this.props.account.token);
+    this.props.getUserAnswers(this.props.account.token);
   }
 
   render() {
@@ -43,11 +44,12 @@ class Activities extends React.Component {
 };
 
 Activities.propTypes = {
-  getActivities: PropTypes.func.isRequired,
+  getUserQuestions: PropTypes.func.isRequired,
+  getUserAnswers: PropTypes.func.isRequired,
 }
 
 const mapStateToProps = state => ({
   account: state.account
 })
 
-export default connect(mapStateToProps, {getActivities})(Activities);
+export default connect(mapStateToProps, {getUserQuestions, getUserAnswers})(Activities);

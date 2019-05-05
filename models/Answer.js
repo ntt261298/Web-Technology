@@ -19,10 +19,10 @@ const AnswerSchema = new Schema({
     type: String,
     required: true
   },
-  date: {
+  created_at: {
     type: Date,
     default: Date.now
   }
 });
 
-module.exports = Comment = mongoose.model('comment', CommentSchema);
+module.exports = Answer = mongoose.model('answer', AnswerSchema);
