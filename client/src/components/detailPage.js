@@ -20,7 +20,7 @@ export default class detailPage extends React.Component {
             <Login />
             <ForgetPwd />
             <Navs />
-            <Detail />
+            <Detail id={this.props.match.params.id}/>
         </main>
         <footer>
           <Footer />

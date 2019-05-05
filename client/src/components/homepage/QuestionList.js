@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import toastr from 'toastr';
 import { getQuestions} from '../../actions/questionsAction';
 import { PropTypes } from 'prop-types';
 
@@ -32,14 +33,21 @@ class QuestionList extends React.Component {
 
   render() {
     const { questions } = this.props.question;
+    const { token } = this.props.account;
     return (
       <div className="question-home">
         <div className="head">
           <h3>Top Questions</h3>
           <button className="ask-question" >
-            <a href="/askQuestion" >
-                Ask Question
-            </a>
+            {
+              token ? (
+              <a href="/askQuestion" >
+                  Ask Question
+              </a>) : (
+                <span onClick={() => toastr.error('You must login to ask question')}>Ask Question</span>
+              )
+            }
+            
           </button>
         </div>
         <div className="filter">
@@ -74,7 +82,9 @@ class QuestionList extends React.Component {
           </div>
           <div className="content-question">
             <div className="title-question">
-              {question.title}
+              <a href={`/detail/${question._id}`}>
+                {question.title}
+              </a>
             </div>
             <div className="cate-question">
               {question.category}
@@ -116,7 +126,8 @@ QuestionList.propTypes = {
 }
 
 const mapStateToProps = state => ({
-  question: state.question
+  question: state.question,
+  account: state.account
 })
 
 export default connect(mapStateToProps, {getQuestions})(QuestionList);

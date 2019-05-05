@@ -83,13 +83,15 @@ router.get('/cate', (req, res) => {
 router.get('/detail/:id', (req, res) => {
   const question = req.params.id;
   Question.findById(question)
+    .then(question => res.json(question))
+});
+
+router.post('/addView', (req, res) => {
+  const question = req.body.id;
+  Question.findById(question)
     .then(question => {
-      Cate.findById(question.cateId)
-        .then(cate => {
-          question.cate = cate.name;
-          console.log(cate.name);
-          res.json(question);
-        })
+      question.views++;
+      question.save();
     })
 });
 

@@ -20,7 +20,7 @@ export default function(state = initialState, action) {
       console.log(action.payload);
       return {
         ...state,
-        question: state.question.push(action.payload),
+        question: action.payload,
         loading: false
       };
     }

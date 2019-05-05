@@ -58,6 +58,12 @@ export const addQuestion = (title, problem, code, category, token) => dispatch =
     )
 };
 
+export const addView = (id) => dispatch => {
+  axios.post(`/api/questions/addView`, {
+    id
+  })
+};
+
 export const getCate = () => dispatch => {
   dispatch(setLoading());
   axios.get('/api/questions/cate')
