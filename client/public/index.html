@@ -1,15 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Tech Lead</title>
-    <link rel="shortcut icon" type="image/ico" href="../image/favicon.ico"/>
-  </head>
-  <body>
-    <noscript>
-      You need to enable JavaScript to run this app.
-    </noscript>
-    <div id="root"></div>
-  </body>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Tech Lead</title>
+
+  <link rel="shortcut icon" type="image/ico" href="../image/favicon.ico" />
+
+  <!-- highlight code -->
+  <script type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/shades-of-purple.min.css">
+  <script>hljs.initHighlightingOnLoad();</script>
+
+  <!-- rating -->
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+    .checked {
+      color: orange;
+    }
+  </style>
+  <script>
+    function add(ths, sno) {
+      for (var i = 1; i <= 5; i++) {
+        var cur = document.getElementById("star" + i)
+        cur.className = "fa fa-star"
+      }
+      for (var i = 1; i <= sno; i++) {
+        var cur = document.getElementById("star" + i)
+        if (cur.className == "fa fa-star") {
+          cur.className = "fa fa-star checked"
+        }
+      }
+    }
+  </script>
+  <!-- end rating -->
+</head>
+
+<body>
+  <noscript>
+    You need to enable JavaScript to run this app.
+  </noscript>
+  <div id="root"></div>
+</body>
+
 </html>
