@@ -15,7 +15,7 @@ export default class searchPage extends React.Component {
         <header>
           <Menu />
         </header>
-        <main className="clearfix search-body">
+        <main className="clearfix home-body">
           <Login />
           <ForgetPwd />
           <Navs />

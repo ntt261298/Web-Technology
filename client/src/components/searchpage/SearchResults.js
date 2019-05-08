@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { getSearchResults } from '../../actions/searchAction';
 // import { addToCart} from '../actions/cartAction';
 import { PropTypes } from 'prop-types';
+import toastr from 'toastr';
 import { Link } from 'react-router-dom';
 
 class SearchResults extends React.Component {
@@ -24,27 +25,53 @@ class SearchResults extends React.Component {
   }
 
   render() {
+    const token = this.props.token;
     const results = this.props.search.results;
+    if(!results.length) return (<h2 style={{marginTop: '20px'}} className="content">No question in this category</h2>);
     return (
-      <div className="book-list">
-        { results.slice(0, 12).map(({_id, bookImage, name, author, price, rating, des}, index) => (
-          <div className={`book-information book${index+1}`} key={_id}>
-              <div className="book-img">
-                <a href={'/detail/' + _id}>
-                  <img className="image-book" src={`https://intense-temple-58166.herokuapp.com/uploads/${bookImage}`} alt=""/>
-                </a>
-              </div>
-              <div className="book-inf">
-                <h2 className="name">{name}</h2>
-                {
-                  this.renderStar(rating)
-                }
-                <h5 className="author">{author}</h5>
-                <h1 className="name">${price}</h1>
-                <p className="detail-infor">{des.slice(0, 100)}...</p>
-                </div>
+      <div className="content">
+        <div className="head">
+          <h3>Category Questions</h3>
+          <button className="ask-question" >
+            {
+              token ? (
+              <a href="/askQuestion" >
+                  Ask Question
+              </a>) : (
+                <span onClick={() => toastr.error('You must login to ask question')}>Ask Question</span>
+              )
+            }
+            
+          </button>
+        </div>
+        {results.map((question, index) => ( 
+        <div className={`questions question-${index + 1}`}>
+          <div className="info-question">
+            <div className="rating">
+              <div>{question.rating}</div>
+              <div>rating</div>
+            </div>
+            <div className="answers">
+              <div>{question.answers}</div>
+              <div>answers</div>
+            </div>
+            <div className="views">
+              <div>{question.views}</div>
+              <div>views</div>
+            </div>
           </div>
-        )) }
+          <div className="content-question">
+            <div className="title-question">
+              <a href={`/detail/${question._id}`}>
+                {question.title}
+              </a>
+            </div>
+            <div className="cate-question">
+              {question.category}
+            </div>
+          </div>
+        </div>
+        ))}
       </div>
     );
   };
@@ -55,7 +82,8 @@ SearchResults.propTypes = {
 }
 
 const mapStateToProps = state => ({
-  search: state.search
+  search: state.search,
+  token: state.account.token,
 })
 
 export default connect(mapStateToProps, { getSearchResults })(SearchResults);

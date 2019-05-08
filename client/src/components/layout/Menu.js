@@ -81,7 +81,7 @@ class Menu extends React.Component {
           {
             searching ? (
               results.map(({_id, title}) => (
-                <a href={`/search/name/${title}`}>
+                <a href={`/detail/${_id}`}>
                     <p  key={_id}>{title}</p>
                 </a>
               ))
