@@ -21,9 +21,7 @@ router.get('/', (req, res) => {
   }
   if(type === 'category') {
     Question.find({
-      category: {
-        $regex: new RegExp(Question)
-      }
+      category: question
     }, {}, (err, data) => {
       res.json(data);
     }).limit(10);

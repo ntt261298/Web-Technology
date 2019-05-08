@@ -55,16 +55,16 @@ class Navs extends React.Component {
                     </li>
                   ))
                 } */}
-                <li><a href="/">Javascript</a></li>
-                <li><a href="/">PHP</a></li>
-                <li><a href="/">JAVA</a></li>
-                <li><a href="/">C/C++</a></li>
-                <li><a href="/">Python</a></li>
-                <li><a href="/">Swift</a></li>
-                <li><a href="/">C#</a></li>
-                <li><a href="/">Go</a></li>
-                <li><a href="/">Haskell</a></li>
-                <li><a href="/">Assembly</a></li>
+                <li><a href="/search/category/javascript">Javascript</a></li>
+                <li><a href="/search/category/php">PHP</a></li>
+                <li><a href="/search/category/java">JAVA</a></li>
+                <li><a href="/search/category/C">C/C++</a></li>
+                <li><a href="/search/category/python">Python</a></li>
+                <li><a href="/search/category/swift">Swift</a></li>
+                <li><a href="/search/category/C#">C#</a></li>
+                <li><a href="/search/category/go">Go</a></li>
+                <li><a href="/search/category/haskell">Haskell</a></li>
+                <li><a href="/search/category/assembly">Assembly</a></li>
               </ul>
             </div>
             <div className={`price ${this.state.nav}`}>
