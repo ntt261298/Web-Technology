@@ -4,16 +4,20 @@ import { connect } from 'react-redux';
 import { Button } from "reactstrap";
 import toastr from 'toastr';
 import { getQuestion, addView } from '../../actions/questionsAction';
+import { addAnswer, getAnswers } from '../../actions/answersAction';
 
 class Detail extends React.Component {
 	state = {
 		questionRating: 3,
 		inputReply: false,
 		rating: 3,
+		commentText: '',
+		commentCode: '',
 	}
 
 	componentDidMount() {
 		this.props.getQuestion(this.props.id);
+		this.props.getAnswers(this.props.id);
 		this.props.addView(this.props.id);
 	}
 
@@ -64,9 +68,43 @@ class Detail extends React.Component {
 
 	}
 
+	onChange(e) {
+		this.setState({
+			[e.target.name]: e.target.value,
+		})
+	}
+
+	addAnswer() {
+		const { commentText, commentCode } = this.state;
+		if(!commentText.trim()) {
+			toastr.error('Comment must not be empty.');
+			return;
+		}
+		this.props.addAnswer(this.props.token, this.props.question.question._id, commentText, commentCode);
+		toastr.success('Add successfully');
+	}
+
+	getAnswerTime(fromTime, toTime) {
+		let from = new Date(fromTime);
+		let to = new Date();
+		let differenceTravel = to.getTime() - from.getTime();
+		let seconds = Math.floor(differenceTravel / 1000);
+		if(seconds < 60) {
+		  return seconds + ` seconds ago`;
+		} else if(60 <= seconds && seconds < 3600) {
+		  return Math.floor(seconds/60) + ` minutes ago`;
+		} else if(3600 <= seconds && seconds< 86400) {
+		  return Math.floor(seconds/3600) + ` hours ago`;
+		} else if(86400 <= seconds && seconds < 2592000) {
+		  return Math.floor(seconds/86400) + ` days ago`;
+		} else return Math.floor(seconds/2592000) + ` months ago`;
+	}
+
 	render() {
 		const token = this.props.token;
 		const { question } = this.props.question;
+		const { answer } = this.props.answer;
+		console.log(answer);
 		return (
 			<div className="content">
 				<div className="question-home">
@@ -94,8 +132,6 @@ class Detail extends React.Component {
 						<h5>Star Rating</h5>
 						{this.pickRating(this.state.rating)}
 						<a href="#Nhúng link list câu hỏi" className="detail_lang">{question.category}</a>
-						<a href="#Nhúng link list câu hỏi" className="detail_lang">C++</a>
-
 					</div>
 				</div>
 
@@ -110,42 +146,44 @@ class Detail extends React.Component {
 						</div>
 						{/* the input field */}
 						<div className="input_comment">
-							<input type="text" placeholder="Input a comment here.." />
+							<input type="text" name="commentText" onChange={(e) => this.onChange(e)} placeholder="Input a comment here.." />
 							&emsp;
-							<input type="text" placeholder="Input some code here.." />
+							<input type="text" name="commentCode" onChange={(e) => this.onChange(e)} placeholder="Input some code here.." />
 							<Button
 								className="comment_button"
 								color="primary"
-								onClick={this.toggle}
+								onClick={() => this.addAnswer()}
 								style={{ marginBottom: "30px" }}
 							>
 								Post
             			</Button>
 						</div>
 					</div>
-					{/* new comment */}
-					<div className="new_comment">
+					{ answer.map(({answer, code, created_at, name}, index) => (
+						<div className="new_comment">
 						{/* build comment */}
 						<ul className="user_comment">
 							{/* current #{user} avatar */}
 							<div className="user_avatar">
 								<img src="https://s3.amazonaws.com/uifaces/faces/twitter/dancounsell/73.jpg" />
 							</div>{/* the comment body */}<div className="comment_body">
-								<p>Nhúng comment user 1 vào đây</p>
+								<p>{answer}</p>
 								<br />
-								<div>
-									<pre><code className="#TenNgonNgu">Code here</code></pre>
-								</div>
+								{code ? (
+									<div>
+										<pre><code className={`${question.category}`}>{code}</code></pre>
+									</div>
+								) : null}
+								
 							</div>
 							{/* comments toolbar */}
 							<div className="comment_toolbar">
 								{/* inc. date and time */}
 								<div className="comment_details">
 									<ul>
-										<li><i className="fa fa-clock-o" /> 13:94</li>
-										<li><i className="fa fa-calendar" /> 04/01/2015</li>
+										<li><i className="fa fa-clock-o" />{ this.getAnswerTime(created_at, Date()) }</li>
 										<li><i className="fa fa-pencil" />
-											<span className="user">John Smith</span></li>
+											<span className="user">{name}</span></li>
 									</ul>
 								</div>
 								{/* inc. share/reply and love */}
@@ -208,6 +246,7 @@ class Detail extends React.Component {
 							</li>
 						</ul>
 					</div>
+					)) }
 					{/* new comment */}
 					<div className="new_comment">
 						{/* build comment */}
@@ -228,7 +267,6 @@ class Detail extends React.Component {
 								<div className="comment_details">
 									<ul>
 										<li><i className="fa fa-clock-o" /> 13:94</li>
-										<li><i className="fa fa-calendar" /> 04/01/2015</li>
 										<li><i className="fa fa-pencil" />
 											<span className="user">Sarah Walkman</span></li>
 									</ul>
@@ -257,7 +295,8 @@ class Detail extends React.Component {
 const mapStateToProps = state => ({
 	error: state.question.error,
 	token: state.account.token,
-	question: state.question
+	question: state.question,
+	answer: state.answer,
 })
 
-export default connect(mapStateToProps, { getQuestion, addView })(Detail);
+export default connect(mapStateToProps, { getQuestion, addView, addAnswer, getAnswers })(Detail);

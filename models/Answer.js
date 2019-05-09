@@ -15,9 +15,9 @@ const AnswerSchema = new Schema({
     type: String,
     required: true
   },
-  rating: {
+  code: {
     type: String,
-    required: true
+    default: ''
   },
   created_at: {
     type: Date,

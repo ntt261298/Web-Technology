@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { GET_COMMENT, ADD_COMMENT }from './types';
+import { GET_COMMENT, ADD_COMMENT } from './types';
 
 export const getComment = () => dispatch => {
   axios.get('/api/comment')
@@ -11,12 +11,11 @@ export const getComment = () => dispatch => {
     )
 };
 
-export const addComment = (token, answerID, comment, rating) => dispatch => {
+export const addComment = (token, answerID, comment) => dispatch => {
   axios.post(`/api/comment`, {
     token,
     answerID,
-    comment,
-    rating
+    comment
   }).then(res => {
       dispatch({
         type: ADD_COMMENT,
