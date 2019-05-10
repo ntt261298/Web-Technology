@@ -37,6 +37,7 @@ const Cate = require('../../models/Cate.js');
 // @access Public
 router.get('/', (req, res) => {
   Question.find()
+    .sort({created_at: -1})
     .then(questions => res.json(questions))
 });
 

@@ -57,6 +57,7 @@ class AddQuestion extends React.Component {
     };
 
     this.props.addQuestion(title, problem, code, language, this.props.token);
+    this.toggle();
   };
 
   onChange = event => {
@@ -145,11 +146,13 @@ class AddQuestion extends React.Component {
             <ModalHeader toggle={this.toggle}>Note</ModalHeader>
             <ModalBody>Are you sure you want to submit this question?</ModalBody>
             <ModalFooter>
+            <Link to="/" style={{ color: "white" }}>
               <Button color="primary" onClick={this.handleSubmit}>
-                <Link to="/" style={{ color: "white" }}>
+                
                   OK
-                </Link>
+                
               </Button>{" "}
+              </Link>
               <Button color="secondary" onClick={this.toggle}>
                 Cancel
               </Button>
