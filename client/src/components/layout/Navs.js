@@ -55,44 +55,23 @@ class Navs extends React.Component {
                     </li>
                   ))
                 } */}
-                <li><a href="/search/category/javascript">Javascript</a></li>
                 <li><a href="/search/category/php">PHP</a></li>
-                <li><a href="/search/category/java">JAVA</a></li>
-                <li><a href="/search/category/C">C/C++</a></li>
+                <li><a href="/search/category/html">HTML</a></li>
+                <li><a href="/search/category/css">CSS</a></li>
+                <li><a href="/search/category/xml">XML</a></li>
+                <li><a href="/search/category/java">Java</a></li>
+                <li><a href="/search/category/javascript">Javascript</a></li>
                 <li><a href="/search/category/python">Python</a></li>
                 <li><a href="/search/category/swift">Swift</a></li>
-                <li><a href="/search/category/C#">C#</a></li>
                 <li><a href="/search/category/go">Go</a></li>
+                <li><a href="/search/category/C">C/C++</a></li>
+                <li><a href="/search/category/C#">C#</a></li>
                 <li><a href="/search/category/haskell">Haskell</a></li>
                 <li><a href="/search/category/assembly">Assembly</a></li>
+                <li><a href="/search/category/ruby">Ruby</a></li>              
               </ul>
             </div>
-            <div className={`price ${this.state.nav}`}>
-              <h3>TECHNOLOGIES</h3>
-              <div className="price-bar">
-                <div className="bar">
-                  <div className="circle-price circle-price-1"></div>
-                  <div className="circle-price circle-price-2"></div>
-                </div>
-              </div>
-              <ul>
-                <li>
-                  <a href={`/`}>NodeJs</a>
-                </li>
-                <li>
-                  <a href={`/`}>ReactJs</a>
-                </li>
-                <li>
-                  <a href={`/`}>MongoDB</a>
-                </li>
-                <li>
-                  <a href={`/`}>Git</a>
-                </li>
-                <li>
-                  <a href={`/`}>Webpack</a>
-                </li>
-              </ul>
-            </div>
+            
             <div className={`${this.state.nav}`}>
               <h3>RATING</h3>
               <ul>
