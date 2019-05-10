@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 import currency from '../../helpers/currency.js';
 import total from '../../helpers/total.js';
+import { Link } from 'react-router-dom';
 
 class User extends React.Component {
   state = {
@@ -161,9 +162,9 @@ class User extends React.Component {
                 { allItems.question.length ? (
                   allItems.question.map((question, index) => (
                     <React.Fragment>
-                      <a class="htr-order-id" onClick={this.viewDetail.bind(this, question._id)}>
+                      <Link to={`/detail/${question._id}`}  class="htr-order-id" onClick={this.viewDetail.bind(this, question._id)}>
                           {question._id}
-                      </a>
+                      </Link>
                       <div class="htr-properties-value">
                           {this.convertDate(question.created_at)}
                       </div>

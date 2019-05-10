@@ -44,24 +44,31 @@ class Detail extends React.Component {
 		return star;
 	}
 
-	pickRating(rating) {
+	pickRating(index, rating) {
 		let star = [];
 		let i = 1;
 		
 		for (i; i <= rating; i++) {
-			star.push(<span key={i} onClick={this.setRating.bind(this)} name={i} className="fa fa-star checked" />)
+			star.push(<span key={i} onClick={this.setRating.bind(this, index)} name={i} className="fa fa-star checked" />)
 		};
 		for (i; i <= 5; i++) {
-			star.push(<span key={i} onClick={this.setRating.bind(this)} name={i} className="fa fa-star" />)
+			star.push(<span key={i} onClick={this.setRating.bind(this, index)} name={i} className="fa fa-star" />)
 		};
 		return star;
 	}
 
-	setRating(e) {
+	setRating(index, e) {
 		e.preventDefault();
+		if(index === "question") {
+			this.setState({
+				rating: e.target.getAttribute('name')
+			});
+			return;
+		}
 		this.setState({
-			rating: e.target.getAttribute('name')
-		})
+			[`rating-${index}`]: e.target.getAttribute('name')
+		});
+		// console.log(this.state[`rating-`])
 	}
 
 	submitReply() {
@@ -130,7 +137,7 @@ class Detail extends React.Component {
 					</div>
 					<div>
 						<h5>Star Rating</h5>
-						{this.pickRating(this.state.rating)}
+						{this.pickRating('question' ,this.state.rating)}
 						<a href="#Nhúng link list câu hỏi" className="detail_lang">{question.category}</a>
 					</div>
 				</div>
@@ -195,7 +202,7 @@ class Detail extends React.Component {
 									</ul>
 								</div>
 								<div className="rate_comment">
-									{this.pickRating(this.state.rating)}
+									{this.pickRating(index, this.state[`rating-${index}`])}
 									{/* <span className="fa fa-star" id="star1" value="1" onClick={(e) => this.pickRating(e)} />
 									<span className="fa fa-star" id="star2" value="2" onClick={(e) => this.pickRating(e)} />
 									<span className="fa fa-star" id="star3" value="3" onClick={(e) => this.pickRating(e)} />
@@ -211,13 +218,16 @@ class Detail extends React.Component {
 							) : null }
 							
 							{/* start user replies */}
+							<div className="reply">
 							<li>
 								{/* current #{user} avatar */}
 								<div className="user_avatar">
 									<img src="https://s3.amazonaws.com/uifaces/faces/twitter/manugamero/73.jpg" />
-								</div>{/* the comment body */}<div className="comment_body">
-									<p /><div className="replied_to"><p><span className="user">John Smith:</span>Nhúng comment user 1 vào đây</p>
-									</div>Nhúng câu trả lời cho comment user 1 vào đây<p />
+								</div>
+								{/* the comment body */}<div className="comment_body">
+									<div className="replied_to">
+									Nhúng câu trả lời cho comment user 1 vào đây
+									</div>
 								</div>
 								{/* comments toolbar */}
 								<div className="comment_toolbar">
@@ -244,47 +254,11 @@ class Detail extends React.Component {
 									</div>
 								</div>
 							</li>
+							</div>
+							
 						</ul>
 					</div>
-					)) }
-					{/* new comment */}
-					<div className="new_comment">
-						{/* build comment */}
-						<ul className="user_comment">
-							{/* current #{user} avatar */}
-							<div className="user_avatar">
-								<img src="https://s3.amazonaws.com/uifaces/faces/twitter/kfriedson/73.jpg" />
-							</div>{/* the comment body */}<div className="comment_body">
-								<p>Nhúng comment user 2 vào đây</p>
-								<br />
-								<div>
-									<pre><code className="#TenNgonNgu">Code  here</code></pre>
-								</div>
-							</div>
-							{/* comments toolbar */}
-							<div className="comment_toolbar">
-								{/* inc. date and time */}
-								<div className="comment_details">
-									<ul>
-										<li><i className="fa fa-clock-o" /> 13:94</li>
-										<li><i className="fa fa-pencil" />
-											<span className="user">Sarah Walkman</span></li>
-									</ul>
-								</div>
-								{/* inc. share/reply and love */}
-								<div className="comment_tools">
-									<ul>
-										<li><i className="fa fa-share-alt" /></li>
-										<li><i className="fa fa-reply" /></li>
-										{/* <li><i className="fa fa-heart love" /></li> */}
-									</ul>
-								</div>
-								<div className="rate_comment">
-								{this.pickRating(this.state.rating)}
-								</div>
-							</div>
-						</ul>
-					</div>
+					)) }					
 				</div>
 
 			</div>

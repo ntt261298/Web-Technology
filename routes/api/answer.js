@@ -68,12 +68,19 @@ router.post('/', (req, res) => {
       });
       newAnswer.save()
       .then(answer => {
+        Question.findById(req.body.questionID)
+          .then(question => {
+            console.log(question.answers);
+            question.answers++;
+            question.save();
+          })
         User.findById(Session.userId)
           .then(user => {
             const resAnswer = answer.toObject();
             resAnswer.username = user.toObject().username;
             res.json(resAnswer);
           });
+        
       })
       .catch(err => console.log(err));
     })

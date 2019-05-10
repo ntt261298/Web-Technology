@@ -130,13 +130,16 @@ body {
   font-size: .9rem;
   color: #555;
   background-color: #FFF;
-  border-bottom: 2px solid #f2f2f2;
 }
 .comment_block .new_comment .comment_body .replied_to {
-  margin: 5px 0px;
   background-color: #fafafa;
-  border-bottom: 2px solid #f2f2f2;
+  /* border-bottom: 2px solid #f2f2f2; */
   border-radius: 5px;
+}
+
+.reply {
+  margin-left: 30px;
+  margin-top: 10px; 
 }
 .comment_block .new_comment .comment_body .replied_to p {
   padding: 5px;
