@@ -211,13 +211,16 @@ class Detail extends React.Component {
 							) : null }
 							
 							{/* start user replies */}
+							<div className="reply">
 							<li>
 								{/* current #{user} avatar */}
 								<div className="user_avatar">
 									<img src="https://s3.amazonaws.com/uifaces/faces/twitter/manugamero/73.jpg" />
-								</div>{/* the comment body */}<div className="comment_body">
-									<p /><div className="replied_to"><p><span className="user">John Smith:</span>Nhúng comment user 1 vào đây</p>
-									</div>Nhúng câu trả lời cho comment user 1 vào đây<p />
+								</div>
+								{/* the comment body */}<div className="comment_body">
+									<div className="replied_to">
+									Nhúng câu trả lời cho comment user 1 vào đây
+									</div>
 								</div>
 								{/* comments toolbar */}
 								<div className="comment_toolbar">
@@ -244,47 +247,11 @@ class Detail extends React.Component {
 									</div>
 								</div>
 							</li>
+							</div>
+							
 						</ul>
 					</div>
-					)) }
-					{/* new comment */}
-					<div className="new_comment">
-						{/* build comment */}
-						<ul className="user_comment">
-							{/* current #{user} avatar */}
-							<div className="user_avatar">
-								<img src="https://s3.amazonaws.com/uifaces/faces/twitter/kfriedson/73.jpg" />
-							</div>{/* the comment body */}<div className="comment_body">
-								<p>Nhúng comment user 2 vào đây</p>
-								<br />
-								<div>
-									<pre><code className="#TenNgonNgu">Code  here</code></pre>
-								</div>
-							</div>
-							{/* comments toolbar */}
-							<div className="comment_toolbar">
-								{/* inc. date and time */}
-								<div className="comment_details">
-									<ul>
-										<li><i className="fa fa-clock-o" /> 13:94</li>
-										<li><i className="fa fa-pencil" />
-											<span className="user">Sarah Walkman</span></li>
-									</ul>
-								</div>
-								{/* inc. share/reply and love */}
-								<div className="comment_tools">
-									<ul>
-										<li><i className="fa fa-share-alt" /></li>
-										<li><i className="fa fa-reply" /></li>
-										{/* <li><i className="fa fa-heart love" /></li> */}
-									</ul>
-								</div>
-								<div className="rate_comment">
-								{this.pickRating(this.state.rating)}
-								</div>
-							</div>
-						</ul>
-					</div>
+					)) }					
 				</div>
 
 			</div>
