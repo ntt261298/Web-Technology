@@ -44,24 +44,31 @@ class Detail extends React.Component {
 		return star;
 	}
 
-	pickRating(rating) {
+	pickRating(index, rating) {
 		let star = [];
 		let i = 1;
 		
 		for (i; i <= rating; i++) {
-			star.push(<span key={i} onClick={this.setRating.bind(this)} name={i} className="fa fa-star checked" />)
+			star.push(<span key={i} onClick={this.setRating.bind(this, index)} name={i} className="fa fa-star checked" />)
 		};
 		for (i; i <= 5; i++) {
-			star.push(<span key={i} onClick={this.setRating.bind(this)} name={i} className="fa fa-star" />)
+			star.push(<span key={i} onClick={this.setRating.bind(this, index)} name={i} className="fa fa-star" />)
 		};
 		return star;
 	}
 
-	setRating(e) {
+	setRating(index, e) {
 		e.preventDefault();
+		if(index === "question") {
+			this.setState({
+				rating: e.target.getAttribute('name')
+			});
+			return;
+		}
 		this.setState({
-			rating: e.target.getAttribute('name')
-		})
+			[`rating-${index}`]: e.target.getAttribute('name')
+		});
+		// console.log(this.state[`rating-`])
 	}
 
 	submitReply() {
@@ -130,7 +137,7 @@ class Detail extends React.Component {
 					</div>
 					<div>
 						<h5>Star Rating</h5>
-						{this.pickRating(this.state.rating)}
+						{this.pickRating('question' ,this.state.rating)}
 						<a href="#Nhúng link list câu hỏi" className="detail_lang">{question.category}</a>
 					</div>
 				</div>
@@ -195,7 +202,7 @@ class Detail extends React.Component {
 									</ul>
 								</div>
 								<div className="rate_comment">
-									{this.pickRating(this.state.rating)}
+									{this.pickRating(index, this.state[`rating-${index}`])}
 									{/* <span className="fa fa-star" id="star1" value="1" onClick={(e) => this.pickRating(e)} />
 									<span className="fa fa-star" id="star2" value="2" onClick={(e) => this.pickRating(e)} />
 									<span className="fa fa-star" id="star3" value="3" onClick={(e) => this.pickRating(e)} />
