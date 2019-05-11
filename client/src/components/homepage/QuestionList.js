@@ -53,7 +53,7 @@ class QuestionList extends React.Component {
         <div className="filter">
           <div></div>
           <ul>
-            <li>Interesting</li>
+            <li>All</li>
             <li>Hot</li>
             <li>Week</li>
             <li>Month</li>
@@ -92,30 +92,7 @@ class QuestionList extends React.Component {
           </div>
         </div>
         ))}
-        {/* <div className="questions question-1">
-          <div className="info-question">
-            <div className="rating">
-              <div>4.5</div>
-              <div>rating</div>
-            </div>
-            <div className="answers">
-              <div>0</div>
-              <div>answers</div>
-            </div>
-            <div className="views">
-              <div>12</div>
-              <div>views</div>
-            </div>
-          </div>
-          <div className="content-question">
-            <div className="title-question">
-              There is “utf8' codec can't decode byte 0xcd in position” when import module
-            </div>
-            <div className="cate-question">
-              python
-            </div>
-          </div> */}
-        {/* </div> */}
+        
       </div>
     );
   };
