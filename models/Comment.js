@@ -15,14 +15,14 @@ const CommentSchema = new Schema({
       type: String,
       required: true
   },
-  questionID: {
+  answerID: {
       type: String,
       required: true
   },
-  votes: {
+  rating: {
       type: Number,
       default: 0
   }
 });
 
-module.exports = CommentSchema = mongoose.model('comment', CommentSchema);
+module.exports = Comment = mongoose.model('comment', CommentSchema);

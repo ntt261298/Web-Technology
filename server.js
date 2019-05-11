@@ -73,6 +73,7 @@ app.use(function(req, res, next){
 // User Routes
 app.use('/api/questions', questions);
 app.use('/api/answer', answer);
+app.use('/api/comment', comment);
 app.use('/api/account/signup', userSignup);
 app.use('/api/account/signin', userSignin);
 app.use('/api/account/verify', userVerify);

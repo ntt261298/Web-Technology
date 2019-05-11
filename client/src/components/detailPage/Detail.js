@@ -5,6 +5,7 @@ import { Button } from "reactstrap";
 import toastr from 'toastr';
 import { getQuestion, addView } from '../../actions/questionsAction';
 import { addAnswer, getAnswers } from '../../actions/answersAction';
+import { addComment, getComment } from '../../actions/commentAction';
 
 class Detail extends React.Component {
 	state = {
@@ -18,6 +19,7 @@ class Detail extends React.Component {
 	componentDidMount() {
 		this.props.getQuestion(this.props.id);
 		this.props.getAnswers(this.props.id);
+		this.props.getComment(this.props.id);
 		this.props.addView(this.props.id);
 	}
 
@@ -71,8 +73,19 @@ class Detail extends React.Component {
 		// console.log(this.state[`rating-`])
 	}
 
-	submitReply() {
-
+	submitReply(id, index) {
+		const reply = this.state[`reply-${id}`];
+		const rating  = this.state[`rating-${index}`];
+		if(!reply.trim()) {
+			toastr.error('Reply input is empty');
+			return;
+		}
+		if(!rating) {
+			toastr.error('Please pick rating');
+			return;
+		}
+		this.props.addComment(this.props.token, rating, id, reply);
+		toastr.success('Add successfully');
 	}
 
 	onChange(e) {
@@ -91,7 +104,7 @@ class Detail extends React.Component {
 		toastr.success('Add successfully');
 	}
 
-	getAnswerTime(fromTime, toTime) {
+	getTime(fromTime, toTime) {
 		let from = new Date(fromTime);
 		let to = new Date();
 		let differenceTravel = to.getTime() - from.getTime();
@@ -111,6 +124,7 @@ class Detail extends React.Component {
 		const token = this.props.token;
 		const { question } = this.props.question;
 		const { answer } = this.props.answer;
+		const { comment } = this.props.comment;
 		console.log(answer);
 		return (
 			<div className="content">
@@ -166,7 +180,7 @@ class Detail extends React.Component {
             			</Button>
 						</div>
 					</div>
-					{ answer.map(({answer, code, created_at, name}, index) => (
+					{ answer.map(({_id, answer, code, created_at, name}, index) => (
 						<div className="new_comment">
 						{/* build comment */}
 						<ul className="user_comment">
@@ -188,7 +202,7 @@ class Detail extends React.Component {
 								{/* inc. date and time */}
 								<div className="comment_details">
 									<ul>
-										<li><i className="fa fa-clock-o" />{ this.getAnswerTime(created_at, Date()) }</li>
+										<li><i className="fa fa-clock-o" />{ this.getTime(created_at, Date()) }</li>
 										<li><i className="fa fa-pencil" />
 											<span className="user">{name}</span></li>
 									</ul>
@@ -197,64 +211,67 @@ class Detail extends React.Component {
 								<div className="comment_tools">
 									<ul>
 										<li><i className="fa fa-share-alt" /></li>
-										<li><i className="fa fa-reply" onClick={() => this.setState({inputReply: !this.state.inputReply})}/></li>
+										<li><i className="fa fa-reply" onClick={() => this.setState({[`inputReply-${index}`]: !this.state[`inputReply-${index}`]})}/></li>
 										{/* <li><i className="fa fa-heart love" /></li> */}
 									</ul>
 								</div>
 								<div className="rate_comment">
 									{this.pickRating(index, this.state[`rating-${index}`])}
-									{/* <span className="fa fa-star" id="star1" value="1" onClick={(e) => this.pickRating(e)} />
-									<span className="fa fa-star" id="star2" value="2" onClick={(e) => this.pickRating(e)} />
-									<span className="fa fa-star" id="star3" value="3" onClick={(e) => this.pickRating(e)} />
-									<span className="fa fa-star" id="star4" value="4" onClick={(e) => this.pickRating(e)} />
-									<span className="fa fa-star" id="star5" value="5" onClick={(e) => this.pickRating(e)} /> */}
 								</div>
 							</div>
-							{ this.state.inputReply ? (
+							{ this.state[`inputReply-${index}`] ? (
 								<div className="input-reply">
-									<button onClick={() => this.submitReply()}>Save</button>
-									<input type="text" placeholder="Reply here.."/>	
+									<button onClick={() => this.submitReply(_id, index)}>Save</button>
+									<input type="text" name={`reply-${_id}`} onChange={(e) => this.onChange(e)} placeholder="Reply here.."/>	
 								</div> 
 							) : null }
 							
 							{/* start user replies */}
-							<div className="reply">
-							<li>
-								{/* current #{user} avatar */}
-								<div className="user_avatar">
-									<img src="https://s3.amazonaws.com/uifaces/faces/twitter/manugamero/73.jpg" />
-								</div>
-								{/* the comment body */}<div className="comment_body">
-									<div className="replied_to">
-									Nhúng câu trả lời cho comment user 1 vào đây
-									</div>
-								</div>
-								{/* comments toolbar */}
-								<div className="comment_toolbar">
-									{/* inc. date and time */}
-									<div className="comment_details">
-										<ul>
-											<li><i className="fa fa-clock-o" /> 14:52</li>
-											<li><i className="fa fa-calendar" /> 04/01/2015</li>
-											<li><i className="fa fa-pencil" />
-												<span className="user">Andrew Johnson</span></li>
-										</ul>
-									</div>
-									{/* inc. share/reply and love */}
-									<div className="comment_tools">
-										<ul>
-											<li><i className="fa fa-share-alt" /></li>
-											<li><i className="fa fa-reply" /></li>
-											{/* <li><i className="fa fa-heart love">
-											<span className="love_amt"> 4</span></i></li> */}
-										</ul>
-									</div>
-									<div className="rate_comment">
-										{this.pickRating(this.state.rating)}
-									</div>
-								</div>
-							</li>
-							</div>
+							{
+								comment.map(({answerID, name, content, createdAt, rating}, index) => {
+									if(answerID === _id) {
+										return (
+											<div className="reply">
+												<li>
+													{/* current #{user} avatar */}
+													<div className="user_avatar">
+														<img src="https://s3.amazonaws.com/uifaces/faces/twitter/manugamero/73.jpg" />
+													</div>
+													{/* the comment body */}<div className="comment_body">
+														<div className="replied_to">
+														{ content }
+														</div>
+													</div>
+													{/* comments toolbar */}
+													<div className="comment_toolbar">
+														{/* inc. date and time */}
+														<div className="comment_details">
+															<ul>
+																<li><i className="fa fa-calendar" />{this.getTime(createdAt, Date())}</li>
+																<li><i className="fa fa-pencil" />
+																	<span className="user">{name}</span></li>
+															</ul>
+														</div>
+														{/* inc. share/reply and love */}
+														<div className="comment_tools">
+															<ul>
+																<li><i className="fa fa-share-alt" /></li>
+																<li><i className="fa fa-reply" /></li>
+																{/* <li><i className="fa fa-heart love">
+																<span className="love_amt"> 4</span></i></li> */}
+															</ul>
+														</div>
+														<div className="rate_comment">
+															{this.pickRating(this.state.rating)}
+														</div>
+													</div>
+												</li>
+											</div>
+										)
+									}
+								})
+							}
+							
 							
 						</ul>
 					</div>
@@ -271,6 +288,7 @@ const mapStateToProps = state => ({
 	token: state.account.token,
 	question: state.question,
 	answer: state.answer,
+	comment: state.comment,
 })
 
-export default connect(mapStateToProps, { getQuestion, addView, addAnswer, getAnswers })(Detail);
+export default connect(mapStateToProps, { getQuestion, addView, addAnswer, getAnswers, addComment, getComment })(Detail);
