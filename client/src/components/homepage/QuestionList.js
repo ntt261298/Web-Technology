@@ -37,7 +37,7 @@ class QuestionList extends React.Component {
     return (
       <div className="question-home">
         <div className="head">
-          <h3>Top Questions</h3>
+          <h3>Questions List</h3>
           <button className="ask-question" >
             {
               token ? (
