@@ -57,6 +57,7 @@ class AddQuestion extends React.Component {
     };
 
     this.props.addQuestion(title, problem, code, language, this.props.token);
+    this.toggle();
   };
 
   onChange = event => {
@@ -100,21 +101,21 @@ class AddQuestion extends React.Component {
                   <option value="java">Java</option>
                   <option value="javascript">Javascript</option>
                   <option value="php">Php</option>
-                  <option value="c">C</option>
+                  <option value="html">Html</option>
+                  <option value="css">Css</option>
+                  <option value="xml">Xml</option>
+                  <option value="c#">C#</option>
+                  <option value="c">C/C++</option>
+                  <option value="python">Python</option>
+                  <option value="swift">Swift</option>
+                  <option value="go">Go</option>
+                  <option value="haskell">Haskell</option>
+                  <option value="assembly">Assembly</option>
+                  <option value="ruby">Ruby</option>
                 </select>
               </div>
               <hr />
 
-              <div className="row">
-                <label htmlFor="tech">Technology</label><br />
-                <select name="tech" id="tech" className="txt" tabIndex={4} onChange={event => this.onChange(event)}>
-                  <option value="mysql ">MySQL</option>
-                  <option value="nosql">NoSQL</option>
-                  <option value="sqlserver">SQL Server</option>
-                  <option value="graphdb">GraphDB</option>
-                </select>
-              </div>
-              <hr />
 
               <div className="row">
                 <label htmlFor="code">Show some code </label>
@@ -145,11 +146,13 @@ class AddQuestion extends React.Component {
             <ModalHeader toggle={this.toggle}>Note</ModalHeader>
             <ModalBody>Are you sure you want to submit this question?</ModalBody>
             <ModalFooter>
+            <Link to="/" style={{ color: "white" }}>
               <Button color="primary" onClick={this.handleSubmit}>
-                <Link to="/" style={{ color: "white" }}>
+                
                   OK
-                </Link>
+                
               </Button>{" "}
+              </Link>
               <Button color="secondary" onClick={this.toggle}>
                 Cancel
               </Button>

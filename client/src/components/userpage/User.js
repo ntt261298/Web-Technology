@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 import currency from '../../helpers/currency.js';
 import total from '../../helpers/total.js';
+import { Link } from 'react-router-dom';
 
 class User extends React.Component {
   state = {
@@ -116,7 +117,7 @@ class User extends React.Component {
             page === 'history' ? (
               <div class="htr-grid-container">
 
-                <div style={{gridRow: '1/5'}}>
+                <div style={{gridRow: '1/100'}}>
                 </div>
                 <div class="prf-navbar" style={{maxWidth:'100%'}}>
                     <img class="prf-avt" src="../image/account-circle.svg" />
@@ -142,7 +143,7 @@ class User extends React.Component {
                     <div></div>
                   </React.Fragment>
                 ) : <h2 style={{wordWrap: 'normal', marginTop:'30px', gridColumn: '3/9'}}>You have no activity</h2> }
-                <div class="merged-row-1" style={{gridRow: '2/5'}}>
+                <div class="merged-row-1" style={{gridRow: '2/100'}}>
                     <a class="prf-navbar" style={{marginTop: '30px' }} onClick={this.changePage.bind(this, 'information')}>
                         <img src="../image/baseline-person-24px-white.svg" style={{border: '1px solid #ccc',background: '#3B86FF'}}/>
                         &emsp;Information
@@ -152,18 +153,13 @@ class User extends React.Component {
                         <img src="../image/history.svg" style={{border: '1px solid #ccc',background: '#3B86FF'}}/>
                         &emsp;History
                     </a>
-
-                    {/* <a class="prf-navbar" href="library.html">
-                        <img src="../image/library-books.svg" style={{paddingRight: '20px'}}/>
-                        Library
-                    </a> */}
                 </div>
                 { allItems.question.length ? (
                   allItems.question.map((question, index) => (
                     <React.Fragment>
-                      <a class="htr-order-id" onClick={this.viewDetail.bind(this, question._id)}>
+                      <Link to={`/detail/${question._id}`}  class="htr-order-id" onClick={this.viewDetail.bind(this, question._id)}>
                           {question._id}
-                      </a>
+                      </Link>
                       <div class="htr-properties-value">
                           {this.convertDate(question.created_at)}
                       </div>
@@ -311,11 +307,6 @@ class User extends React.Component {
                 <img src="../image/history.svg" style={{border: '1px solid #ccc',background: '#3B86FF'}}/>
                 &emsp;History
             </a>
-
-            {/* <a class="prf-navbar" href="library.html">
-                <img src="../image/library-books.svg" style={{paddingRight: '20px'}}/>
-                Library
-            </a> */}
         </div>
 
         <div class="prf-grid-info">
@@ -521,8 +512,8 @@ class User extends React.Component {
             </div>
 
             <div class="prf-properties">Address</div>
-            <textarea class="prf-address" name="address" onChange={this.handleChange.bind(this)} id="prf-address" rows="4" value={this.state.address}>
-            </textarea>
+            <input class="prf-address" name="address" onChange={this.handleChange.bind(this)} id="prf-address" rows="4" value={this.state.address}>
+            </input>
 
             <div class="prf-properties">Password</div>
             <input class="prf-password" type="password" id="prf-curr-password" name="pwd" onChange={this.handleChange.bind(this)} placeholder="Your current password"/>
