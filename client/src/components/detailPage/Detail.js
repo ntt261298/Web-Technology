@@ -86,6 +86,11 @@ class Detail extends React.Component {
 		}
 		this.props.addComment(this.props.token, rating, id, reply);
 		toastr.success('Add successfully');
+		this.setState({
+			[`inputReply-${index}`]: '',
+			[`reply-${id}`]: '',
+			[`rating-${index}`]: '',
+		})
 	}
 
 	onChange(e) {
