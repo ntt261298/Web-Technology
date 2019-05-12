@@ -49,7 +49,7 @@ class Detail extends React.Component {
 	pickRating(index, rating) {
 		let star = [];
 		let i = 1;
-		
+
 		for (i; i <= rating; i++) {
 			star.push(<span key={i} onClick={this.setRating.bind(this, index)} name={i} className="fa fa-star checked" />)
 		};
@@ -61,7 +61,7 @@ class Detail extends React.Component {
 
 	setRating(index, e) {
 		e.preventDefault();
-		if(index === "question") {
+		if (index === "question") {
 			this.setState({
 				rating: e.target.getAttribute('name')
 			});
@@ -75,12 +75,12 @@ class Detail extends React.Component {
 
 	submitReply(id, index) {
 		const reply = this.state[`reply-${id}`];
-		const rating  = this.state[`rating-${index}`];
-		if(!reply.trim()) {
+		const rating = this.state[`rating-${index}`];
+		if (!reply.trim()) {
 			toastr.error('Reply input is empty');
 			return;
 		}
-		if(!rating) {
+		if (!rating) {
 			toastr.error('Please pick rating');
 			return;
 		}
@@ -101,7 +101,7 @@ class Detail extends React.Component {
 
 	addAnswer() {
 		const { commentText, commentCode } = this.state;
-		if(!commentText.trim()) {
+		if (!commentText.trim()) {
 			toastr.error('Comment must not be empty.');
 			return;
 		}
@@ -114,15 +114,15 @@ class Detail extends React.Component {
 		let to = new Date();
 		let differenceTravel = to.getTime() - from.getTime();
 		let seconds = Math.floor(differenceTravel / 1000);
-		if(seconds < 60) {
-		  return seconds + ` seconds ago`;
-		} else if(60 <= seconds && seconds < 3600) {
-		  return Math.floor(seconds/60) + ` minutes ago`;
-		} else if(3600 <= seconds && seconds< 86400) {
-		  return Math.floor(seconds/3600) + ` hours ago`;
-		} else if(86400 <= seconds && seconds < 2592000) {
-		  return Math.floor(seconds/86400) + ` days ago`;
-		} else return Math.floor(seconds/2592000) + ` months ago`;
+		if (seconds < 60) {
+			return seconds + ` seconds ago`;
+		} else if (60 <= seconds && seconds < 3600) {
+			return Math.floor(seconds / 60) + ` minutes ago`;
+		} else if (3600 <= seconds && seconds < 86400) {
+			return Math.floor(seconds / 3600) + ` hours ago`;
+		} else if (86400 <= seconds && seconds < 2592000) {
+			return Math.floor(seconds / 86400) + ` days ago`;
+		} else return Math.floor(seconds / 2592000) + ` months ago`;
 	}
 
 	render() {
@@ -152,11 +152,11 @@ class Detail extends React.Component {
 					<p>{question.problem}</p>
 					<br />
 					<div>
-						<pre><code className="c++">void main(){"{"}{"\n"}{"    "}int a,b;{"\n"}{"    "}char dv,chuc,tram;{"\n"}{"    "}clrscr();{"\n"}{"    "}printf("Nhap so bi nhan co 3 chu so a="); scanf("%d",&amp;a);{"\n"}{"    "}printf("Nhap so nhan co 3 chu so b="); scanf("%d",&amp;b);{"\n"}{"    "}dv=b%10;{"\n"}{"    "}chuc=b%100/10;{"\n"}{"    "}tram=b/100;{"\n"}{"    "}printf("\nMo phong phep nhan tay\n\n");{"\n"}{"    "}printf("%20d\n",a);{"\n"}{"    "}printf("%15c%5d\n",'x',b);{"\n"}{"    "}printf("%20s\n","-------");{"\n"}{"    "}printf("%20d\n",a*dv);{"\n"}{"    "}printf("%19d\n",a*chuc);{"\n"}{"    "}printf("%18d\n",a*tram);{"\n"}{"    "}printf("%20s\n","-------");{"\n"}{"    "}printf("%20ld\n",long(a)*b);{"\n"}{"    "}getch();{"\n"}{"}"}{"\n"}</code></pre>
+						<pre><code className="c++ hljs">void main(){"{"}{"\n"}{"    "}int a,b;{"\n"}{"    "}char dv,chuc,tram;{"\n"}{"    "}clrscr();{"\n"}{"    "}printf("Nhap so bi nhan co 3 chu so a="); scanf("%d",&amp;a);{"\n"}{"    "}printf("Nhap so nhan co 3 chu so b="); scanf("%d",&amp;b);{"\n"}{"    "}dv=b%10;{"\n"}{"    "}chuc=b%100/10;{"\n"}{"    "}tram=b/100;{"\n"}{"    "}printf("\nMo phong phep nhan tay\n\n");{"\n"}{"    "}printf("%20d\n",a);{"\n"}{"    "}printf("%15c%5d\n",'x',b);{"\n"}{"    "}printf("%20s\n","-------");{"\n"}{"    "}printf("%20d\n",a*dv);{"\n"}{"    "}printf("%19d\n",a*chuc);{"\n"}{"    "}printf("%18d\n",a*tram);{"\n"}{"    "}printf("%20s\n","-------");{"\n"}{"    "}printf("%20ld\n",long(a)*b);{"\n"}{"    "}getch();{"\n"}{"}"}{"\n"}</code></pre>
 					</div>
 					<div>
 						<h5>Star Rating</h5>
-						{this.pickRating('question' ,this.state.rating)}
+						{this.pickRating('question', this.state.rating)}
 						<a href="#Nhúng link list câu hỏi" className="detail_lang">{question.category}</a>
 					</div>
 				</div>
@@ -185,102 +185,90 @@ class Detail extends React.Component {
             			</Button>
 						</div>
 					</div>
-					{ answer.map(({_id, answer, code, created_at, name}, index) => (
+					{answer.map(({ _id, answer, code, created_at, name }, index) => (
 						<div className="new_comment">
-						{/* build comment */}
-						<ul className="user_comment">
-							{/* current #{user} avatar */}
-							<div className="user_avatar">
-								<img src="https://s3.amazonaws.com/uifaces/faces/twitter/dancounsell/73.jpg" />
-							</div>{/* the comment body */}<div className="comment_body">
-								<p>{answer}</p>
-								<br />
-								{code ? (
-									<div>
-										<pre><code className={`${question.category}`}>{code}</code></pre>
+							{/* build comment */}
+							<ul className="user_comment">
+								{/* current #{user} avatar */}
+								<div className="user_avatar">
+									<img src="https://s3.amazonaws.com/uifaces/faces/twitter/dancounsell/73.jpg" />
+								</div>{/* the comment body */}<div className="comment_body">
+									<p>{answer}</p>
+									{code ? (
+										<div>
+											<pre><code className={`${question.category} hljs`}>{code}</code></pre>
+										</div>
+									) : null}
+
+								</div>
+								{/* comments toolbar */}
+								<div className="comment_toolbar">
+									{/* inc. date and time */}
+									<div className="comment_details">
+										<ul>
+											<li><i className="fa fa-clock-o" />{this.getTime(created_at, Date())}</li>
+											<li><i className="fa fa-pencil" />
+												<span className="user">{name}</span></li>
+										</ul>
+									</div>
+									{/* inc. share/reply and love */}
+									<div className="comment_tools">
+										<ul>
+											<li><i className="fa fa-share-alt" /></li>
+											<li><i className="fa fa-reply" onClick={() => this.setState({ [`inputReply-${index}`]: !this.state[`inputReply-${index}`] })} /></li>
+											{/* <li><i className="fa fa-heart love" /></li> */}
+										</ul>
+									</div>
+									<div className="rate_comment">
+										{this.pickRating(index, this.state[`rating-${index}`])}
+									</div>
+								</div>
+								{this.state[`inputReply-${index}`] ? (
+									<div className="input-reply">
+										<button onClick={() => this.submitReply(_id, index)}>Save</button>
+										<input type="text" name={`reply-${_id}`} onChange={(e) => this.onChange(e)} placeholder="Reply here.." />
 									</div>
 								) : null}
-								
-							</div>
-							{/* comments toolbar */}
-							<div className="comment_toolbar">
-								{/* inc. date and time */}
-								<div className="comment_details">
-									<ul>
-										<li><i className="fa fa-clock-o" />{ this.getTime(created_at, Date()) }</li>
-										<li><i className="fa fa-pencil" />
-											<span className="user">{name}</span></li>
-									</ul>
-								</div>
-								{/* inc. share/reply and love */}
-								<div className="comment_tools">
-									<ul>
-										<li><i className="fa fa-share-alt" /></li>
-										<li><i className="fa fa-reply" onClick={() => this.setState({[`inputReply-${index}`]: !this.state[`inputReply-${index}`]})}/></li>
-										{/* <li><i className="fa fa-heart love" /></li> */}
-									</ul>
-								</div>
-								<div className="rate_comment">
-									{this.pickRating(index, this.state[`rating-${index}`])}
-								</div>
-							</div>
-							{ this.state[`inputReply-${index}`] ? (
-								<div className="input-reply">
-									<button onClick={() => this.submitReply(_id, index)}>Save</button>
-									<input type="text" name={`reply-${_id}`} onChange={(e) => this.onChange(e)} placeholder="Reply here.."/>	
-								</div> 
-							) : null }
-							
-							{/* start user replies */}
-							{
-								comment.map(({answerID, name, content, createdAt, rating}, index) => {
-									if(answerID === _id) {
-										return (
-											<div className="reply">
-												<li>
-													{/* current #{user} avatar */}
-													<div className="user_avatar">
-														<img src="https://s3.amazonaws.com/uifaces/faces/twitter/manugamero/73.jpg" />
-													</div>
-													{/* the comment body */}<div className="comment_body">
-														<div className="replied_to">
-														{ content }
+
+								{/* start user replies */}
+								{
+									comment.map(({ answerID, name, content, createdAt, rating }, index) => {
+										if (answerID === _id) {
+											return (
+												<div className="reply">
+													<li>
+														{/* current #{user} avatar */}
+														<div className="user_avatar">
+															<img src="https://s3.amazonaws.com/uifaces/faces/twitter/manugamero/73.jpg" />
 														</div>
-													</div>
-													{/* comments toolbar */}
-													<div className="comment_toolbar">
-														{/* inc. date and time */}
-														<div className="comment_details">
-															<ul>
-																<li><i className="fa fa-calendar" />{this.getTime(createdAt, Date())}</li>
-																<li><i className="fa fa-pencil" />
-																	<span className="user">{name}</span></li>
-															</ul>
+														{/* the comment body */}
+														<div className="comment_body">
+															<div className="replied_to">
+																{content}
+															</div>
 														</div>
-														{/* inc. share/reply and love */}
-														<div className="comment_tools">
-															<ul>
-																<li><i className="fa fa-share-alt" /></li>
-																<li><i className="fa fa-reply" /></li>
-																{/* <li><i className="fa fa-heart love">
-																<span className="love_amt"> 4</span></i></li> */}
-															</ul>
+														{/* comments toolbar */}
+														<div className="comment_toolbar">
+															{/* inc. date and time */}
+															<div className="comment_details">
+																<ul>
+																	<li><i className="fa fa-clock-o" />{this.getTime(createdAt, Date())}</li>
+																	<li><i className="fa fa-pencil" />
+																		<span className="user">{name}</span></li>
+																</ul>
+															</div>
 														</div>
-														<div className="rate_comment">
-															{this.pickRating(this.state.rating)}
-														</div>
-													</div>
-												</li>
-											</div>
-										)
-									}
-								})
-							}
-							
-							
-						</ul>
-					</div>
-					)) }					
+													</li>
+												</div>
+											)
+										}
+									})
+								}
+
+
+							</ul>
+						</div>
+					))}
 				</div>
 
 			</div>
