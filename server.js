@@ -19,6 +19,8 @@ const userSignup = require('./routes/api/userSignup.js');
 const userSignin = require('./routes/api/userSignin.js');
 const userLogout = require('./routes/api/userLogout.js');
 const userInfor = require('./routes/api/userInfor.js');
+const user = require('./routes/api/user.js');
+
 
 const app = express();
 
@@ -79,6 +81,7 @@ app.use('/api/account/signin', userSignin);
 app.use('/api/account/verify', userVerify);
 app.use('/api/account/logout', userLogout);
 app.use('/api/user', userInfor);
+app.use('/api/viewuser', user);
 app.use('/api/search', search);
 app.use('/uploads', express.static('public/uploads'));
 app.use(express.static('public'));

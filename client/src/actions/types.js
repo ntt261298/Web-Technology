@@ -22,3 +22,5 @@ export const SEARCH_QUESTION = 'SEARCH_QUESTION';
 export const SEARCH_CATE = 'SEARCH_CATE';
 export const GET_COMMENT = 'GET_COMMENT';
 export const ADD_COMMENT = 'ADD_COMMENT';
+export const GET_USER = 'GET_USER';
+

@@ -167,9 +167,9 @@ class Detail extends React.Component {
 					{/* used by #{user} to create a new comment */}
 					<div className="create_new_comment">
 						{/* current #{user} avatar */}
-						<div className="user_avatar">
+						<Link to={`/user/${question.userId}`} className="user_avatar">
 							<img src="https://s3.amazonaws.com/uifaces/faces/twitter/BillSKenney/73.jpg" />
-						</div>
+						</Link>
 						{/* the input field */}
 						<div className="input_comment">
 							<input type="text" name="commentText" onChange={(e) => this.onChange(e)} placeholder="Input a comment here.." />
@@ -185,14 +185,14 @@ class Detail extends React.Component {
             			</Button>
 						</div>
 					</div>
-					{ answer.map(({_id, answer, code, created_at, name}, index) => (
+					{ answer.map(({_id, answer, userID, code, created_at, name}, index) => (
 						<div className="new_comment">
 						{/* build comment */}
 						<ul className="user_comment">
 							{/* current #{user} avatar */}
-							<div className="user_avatar">
+							<Link to={`/user/${userID}`} className="user_avatar">
 								<img src="https://s3.amazonaws.com/uifaces/faces/twitter/dancounsell/73.jpg" />
-							</div>{/* the comment body */}<div className="comment_body">
+							</Link>{/* the comment body */}<div className="comment_body">
 								<p>{answer}</p>
 								<br />
 								{code ? (
@@ -233,15 +233,15 @@ class Detail extends React.Component {
 							
 							{/* start user replies */}
 							{
-								comment.map(({answerID, name, content, createdAt, rating}, index) => {
+								comment.map(({answerID, name, userID, content, createdAt, rating}, index) => {
 									if(answerID === _id) {
 										return (
 											<div className="reply">
 												<li>
 													{/* current #{user} avatar */}
-													<div className="user_avatar">
+													<Link to={`/user/${userID}`} className="user_avatar">
 														<img src="https://s3.amazonaws.com/uifaces/faces/twitter/manugamero/73.jpg" />
-													</div>
+													</Link>
 													{/* the comment body */}<div className="comment_body">
 														<div className="replied_to">
 														{ content }

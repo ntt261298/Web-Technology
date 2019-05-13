@@ -8,6 +8,7 @@ import searchPage from './components/searchPage.js';
 import userPage from './components/userPage.js';
 import askQuestionPage from './components/askQuestionPage.js';
 import resetPage from './components/resetPage.js';
+import viewUserPage from './components/viewUserPage.js';
 import {Redirect, BrowserRouter as Router} from 'react-router-dom';
 import Route from 'react-router-dom/Route';
 import { toggleLogin } from './actions/questionsAction';
@@ -31,6 +32,7 @@ class App extends Component {
         <div className="App">
           <Route path="/" exact component={homePage} />
           <Route path="/detail/:id" exact component={detailPage}/>
+          <Route path="/user/:id" exact component={viewUserPage}/>
           <Route path="/search/:type/:name" exact component={searchPage}/>
           <Route path="/reset/:token" exact component={resetPage}/>
            <PrivateRoute

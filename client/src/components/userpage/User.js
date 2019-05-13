@@ -2,8 +2,6 @@ import React from 'react';
 import { getInfor, getUserQuestions, getUserAnswers, updateUserInfor } from '../../actions/accountsAction.js';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
-import currency from '../../helpers/currency.js';
-import total from '../../helpers/total.js';
 import { Link } from 'react-router-dom';
 
 class User extends React.Component {

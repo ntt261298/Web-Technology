@@ -5,6 +5,7 @@ import accountsReducer from './accountsReducer';
 import searchReducer from './searchReducer';
 import commentReducer from './commentReducer';
 import answersReducer from './answersReducer';
+import userReducer from './userReducer';
 
 export default combineReducers({
   item: itemsReducer,
@@ -13,4 +14,5 @@ export default combineReducers({
   search: searchReducer,
   comment: commentReducer,
   answer: answersReducer,
+  user: userReducer,
 })

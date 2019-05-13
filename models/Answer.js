@@ -22,6 +22,10 @@ const AnswerSchema = new Schema({
   created_at: {
     type: Date,
     default: Date.now
+  },
+  rating: {
+    type: Number,
+    default: 0,
   }
 });
 
