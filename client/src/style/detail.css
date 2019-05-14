@@ -104,8 +104,17 @@ body {
 }
 .comment_block .create_new_comment .input_comment .comment_button{
   float: right;
+  color: var(--gray);
+  background: #bbbbbb;
+  border: none;
   margin: 12px 0 12px 0!important;
 
+}
+.comment_block .create_new_comment .input_comment .comment_button:hover{
+  box-shadow: 2px 0px 4px #00CB834D,
+  -2px 0px 4px #00CB834D,
+  0px 2px 4px #00CB834D,
+  0px -2px 4px #00CB834D;
 }
 .comment_block .create_new_comment .input_comment input[type="text"]:focus {
   outline: none;
@@ -114,7 +123,7 @@ body {
 .comment_block .new_comment {
   width: 100%;
   height: auto;
-  padding: 20px 0;
+  padding: 15px 0;
   border-top: 1px solid var(--blue);
 }
 .comment_block .new_comment .user_comment {
@@ -130,11 +139,6 @@ body {
   font-size: .9rem;
   color: #555;
   background-color: #FFF;
-}
-.comment_block .new_comment .comment_body .replied_to {
-  background-color: #fafafa;
-  /* border-bottom: 2px solid #f2f2f2; */
-  border-radius: 5px;
 }
 
 .reply {
@@ -217,10 +221,16 @@ body {
 .input-reply button {
   float: right;
   border: none;
-  background: var(--blue);
+  background: #bbbbbb;
   padding: 5.5px 15px 5.5px 15px;
-  color: #fff;
+  color: var(--gray);
   margin-left: 5px;
   border-radius: 3px; 
 
+}
+.input-reply button:hover{
+  box-shadow: 2px 0px 4px #00CB834D,
+  -2px 0px 4px #00CB834D,
+  0px 2px 4px #00CB834D,
+  0px -2px 4px #00CB834D;
 }

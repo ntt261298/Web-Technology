@@ -190,7 +190,7 @@ class Detail extends React.Component {
 						{/* build comment */}
 						<ul className="user_comment">
 							{/* current #{user} avatar */}
-							<Link to={`/user/${userID}`} className="user_avatar">
+							<Link to={`/user/${_id}`} className="user_avatar">
 								<img src="https://s3.amazonaws.com/uifaces/faces/twitter/dancounsell/73.jpg" />
 							</Link>{/* the comment body */}<div className="comment_body">
 								<p>{answer}</p>
@@ -233,7 +233,7 @@ class Detail extends React.Component {
 							
 							{/* start user replies */}
 							{
-								comment.map(({answerID, name, userID, content, createdAt, rating}, index) => {
+								comment.map(({answerID, name, userID, ontent, createdAt, rating}, index) => {
 									if(answerID === _id) {
 										return (
 											<div className="reply">
