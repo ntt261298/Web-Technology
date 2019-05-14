@@ -100,12 +100,12 @@ class Detail extends React.Component {
 	}
 
 	addAnswer() {
-		const { commentText, commentCode } = this.state;
+		const { commentText, commentCode, rating } = this.state;
 		if(!commentText.trim()) {
 			toastr.error('Comment must not be empty.');
 			return;
 		}
-		this.props.addAnswer(this.props.token, this.props.question.question._id, commentText, commentCode);
+		this.props.addAnswer(this.props.token, this.props.question.question._id, commentText, commentCode, rating);
 		toastr.success('Add successfully');
 	}
 
@@ -177,7 +177,7 @@ class Detail extends React.Component {
 						<div className="input_comment">
 							<input type="text" name="commentText" onChange={(e) => this.onChange(e)} placeholder="Input a comment here.." />
 							&emsp;
-							<input type="text" name="commentCode" onChange={(e) => this.onChange(e)} placeholder="Input some code here.." />
+							<textarea type="text" name="commentCode" onChange={(e) => this.onChange(e)} placeholder="Input some code here.." />
 							<Button
 								className="comment_button"
 								color="primary"

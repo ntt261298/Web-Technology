@@ -120,6 +120,16 @@ body {
   outline: none;
   border-bottom: 2px solid var(--blue);
 }
+.input_comment textarea {
+  width: 44%;
+  font-family: "Lato", sans-serif;
+  font-weight: 300;
+  font-size: 1rem;
+  padding: 10px;
+  border: none;
+  /* border-bottom: 2px solid #f2f2f2; */
+}
+
 .comment_block .new_comment {
   width: 100%;
   height: auto;

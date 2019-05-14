@@ -65,6 +65,7 @@ router.post('/', (req, res) => {
           questionID: req.body.questionID,
           answer: req.body.answerText,
           code: req.body.answerCode,
+          rating: req.body.rating,
       });
       newAnswer.save()
       .then(answer => {
@@ -80,7 +81,20 @@ router.post('/', (req, res) => {
             resAnswer.username = user.toObject().username;
             res.json(resAnswer);
           });
-        
+          Answer.find({questionID: req.body.questionID})
+          .then(answers => {
+            let totalRating = 0;
+            answers.forEach(answer => {
+              totalRating+= parseInt(answer.rating);
+            });
+            let avgRating = parseInt(totalRating/answers.length);
+            console.log(avgRating);
+            Question.findById(req.body.questionID, function(err, question) {
+              if(err) console.log(err);
+              question.rating = avgRating;
+              question.save();
+            })
+})
       })
       .catch(err => console.log(err));
     })

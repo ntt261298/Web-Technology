@@ -11,12 +11,13 @@ export const getAnswers = (id) => dispatch => {
     )
 };
 
-export const addAnswer = (token, questionID, answerText, answerCode) => dispatch => {
+export const addAnswer = (token, questionID, answerText, answerCode, rating) => dispatch => {
   axios.post(`/api/answer`, {
     token,
     questionID,
     answerText,
-    answerCode
+    answerCode,
+    rating
   }).then(res => {
       dispatch({
         type: ADD_ANSWER,

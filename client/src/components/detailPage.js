@@ -22,7 +22,7 @@ export default class detailPage extends React.Component {
             <Navs />
             <Detail id={this.props.match.params.id}/>
         </main>
-        <footer>
+        <footer className="clearfix">
           <Footer />
         </footer>
       </div>
