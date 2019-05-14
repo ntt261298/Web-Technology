@@ -171,7 +171,7 @@ class Detail extends React.Component {
 					<div className="create_new_comment">
 						{/* current #{user} avatar */}
 						<Link to={`/user/${question.userId}`} className="user_avatar">
-							<img style={{background: 'var(--blue)'}} src="../image/account-circle.svg" />
+							<img src="../image/avt1.png" />
 						</Link>
 						{/* the input field */}
 						<div className="input_comment">
@@ -194,7 +194,7 @@ class Detail extends React.Component {
 						<ul className="user_comment">
 							{/* current #{user} avatar */}
 							<Link to={`/user/${_id}`} className="user_avatar">
-								<img src="https://s3.amazonaws.com/uifaces/faces/twitter/dancounse" />
+								<img src="../image/avt1.png" />
 							</Link>{/* the comment body */}<div className="comment_body">
 								<p>{answer}</p>
 								<br />
@@ -244,7 +244,7 @@ class Detail extends React.Component {
 												<li>
 													{/* current #{user} avatar */}
 													<Link to={`/user/${userID}`} className="user_avatar">
-														<img src="https://s3.amazonaws.com/uifaces/faces/twitter/manugamero/73.jpg" />
+														<img src="../image/avt2.png" />
 													</Link>
 													{/* the comment body */}<div className="comment_body">
 														<div className="replied_to">
