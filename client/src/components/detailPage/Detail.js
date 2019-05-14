@@ -212,7 +212,7 @@ class Detail extends React.Component {
 									<ul>
 										<li><i className="fa fa-clock-o" />{ this.getTime(created_at, Date()) }</li>
 										<li><i className="fa fa-pencil" />
-											<span className="user">{name}</span></li>
+											<Link to={`/user/${_id}`}><span className="user">{name}</span></Link></li>
 											<li><span>{rating}{' '}rating</span></li>
 									</ul>
 								</div>
