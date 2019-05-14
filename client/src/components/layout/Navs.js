@@ -64,8 +64,8 @@ class Navs extends React.Component {
                 <li><a href="/search/category/python">Python</a></li>
                 <li><a href="/search/category/swift">Swift</a></li>
                 <li><a href="/search/category/go">Go</a></li>
-                <li><a href="/search/category/C">C/C++</a></li>
-                <li><a href="/search/category/C#">C#</a></li>
+                <li><a href="/search/category/c">C/C++</a></li>
+                <li><a href="/search/category/csharp">C#</a></li>
                 <li><a href="/search/category/haskell">Haskell</a></li>
                 <li><a href="/search/category/assembly">Assembly</a></li>
                 <li><a href="/search/category/ruby">Ruby</a></li>              

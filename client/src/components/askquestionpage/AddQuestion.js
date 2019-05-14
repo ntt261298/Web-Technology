@@ -104,7 +104,7 @@ class AddQuestion extends React.Component {
                   <option value="html">Html</option>
                   <option value="css">Css</option>
                   <option value="xml">Xml</option>
-                  <option value="c#">C#</option>
+                  <option value="csharp">C#</option>
                   <option value="c">C/C++</option>
                   <option value="python">Python</option>
                   <option value="swift">Swift</option>
