@@ -175,9 +175,9 @@ class Detail extends React.Component {
 						</Link>
 						{/* the input field */}
 						<div className="input_comment">
-							<input type="text" name="commentText" onChange={(e) => this.onChange(e)} placeholder="Input a comment here.." />
+							<textarea rows="1" type="text" name="commentText" onChange={(e) => this.onChange(e)} placeholder="Input a comment here.." />
 							&emsp;
-							<textarea type="text" name="commentCode" onChange={(e) => this.onChange(e)} placeholder="Input some code here.." />
+							<textarea rows="1" type="text" name="commentCode" onChange={(e) => this.onChange(e)} placeholder="Input some code here.." />
 							<Button
 								className="comment_button"
 								color="primary"
