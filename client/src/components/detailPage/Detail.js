@@ -152,7 +152,7 @@ class Detail extends React.Component {
 					<p>{question.problem}</p>
 					<br />
 					<div>
-						<pre><code className="c++">void main(){"{"}{"\n"}{"    "}int a,b;{"\n"}{"    "}char dv,chuc,tram;{"\n"}{"    "}clrscr();{"\n"}{"    "}printf("Nhap so bi nhan co 3 chu so a="); scanf("%d",&amp;a);{"\n"}{"    "}printf("Nhap so nhan co 3 chu so b="); scanf("%d",&amp;b);{"\n"}{"    "}dv=b%10;{"\n"}{"    "}chuc=b%100/10;{"\n"}{"    "}tram=b/100;{"\n"}{"    "}printf("\nMo phong phep nhan tay\n\n");{"\n"}{"    "}printf("%20d\n",a);{"\n"}{"    "}printf("%15c%5d\n",'x',b);{"\n"}{"    "}printf("%20s\n","-------");{"\n"}{"    "}printf("%20d\n",a*dv);{"\n"}{"    "}printf("%19d\n",a*chuc);{"\n"}{"    "}printf("%18d\n",a*tram);{"\n"}{"    "}printf("%20s\n","-------");{"\n"}{"    "}printf("%20ld\n",long(a)*b);{"\n"}{"    "}getch();{"\n"}{"}"}{"\n"}</code></pre>
+						<pre><code className="c++ hljs">void main(){"{"}{"\n"}{"    "}int a,b;{"\n"}{"    "}char dv,chuc,tram;{"\n"}{"    "}clrscr();{"\n"}{"    "}printf("Nhap so bi nhan co 3 chu so a="); scanf("%d",&amp;a);{"\n"}{"    "}printf("Nhap so nhan co 3 chu so b="); scanf("%d",&amp;b);{"\n"}{"    "}dv=b%10;{"\n"}{"    "}chuc=b%100/10;{"\n"}{"    "}tram=b/100;{"\n"}{"    "}printf("\nMo phong phep nhan tay\n\n");{"\n"}{"    "}printf("%20d\n",a);{"\n"}{"    "}printf("%15c%5d\n",'x',b);{"\n"}{"    "}printf("%20s\n","-------");{"\n"}{"    "}printf("%20d\n",a*dv);{"\n"}{"    "}printf("%19d\n",a*chuc);{"\n"}{"    "}printf("%18d\n",a*tram);{"\n"}{"    "}printf("%20s\n","-------");{"\n"}{"    "}printf("%20ld\n",long(a)*b);{"\n"}{"    "}getch();{"\n"}{"}"}{"\n"}</code></pre>
 					</div>
 					<div>
 						<h5>Star Rating</h5>
@@ -197,7 +197,7 @@ class Detail extends React.Component {
 								<br />
 								{code ? (
 									<div>
-										<pre><code className={`${question.category}`}>{code}</code></pre>
+										<pre><code className={`${question.category} hljs`}>{code}</code></pre>
 									</div>
 								) : null}
 								
@@ -212,7 +212,7 @@ class Detail extends React.Component {
 											<span className="user">{name}</span></li>
 									</ul>
 								</div>
-								{/* inc. share/reply and love */}
+								{/* inc. share/reply and rate */}
 								<div className="comment_tools">
 									<ul>
 										<li><i className="fa fa-share-alt" /></li>
@@ -233,7 +233,7 @@ class Detail extends React.Component {
 							
 							{/* start user replies */}
 							{
-								comment.map(({answerID, name, userID, ontent, createdAt, rating}, index) => {
+								comment.map(({answerID, name, userID, content, createdAt, rating}, index) => {
 									if(answerID === _id) {
 										return (
 											<div className="reply">
@@ -252,22 +252,10 @@ class Detail extends React.Component {
 														{/* inc. date and time */}
 														<div className="comment_details">
 															<ul>
-																<li><i className="fa fa-calendar" />{this.getTime(createdAt, Date())}</li>
+																<li><i className="fa fa-clock-o" />{this.getTime(createdAt, Date())}</li>
 																<li><i className="fa fa-pencil" />
 																	<span className="user">{name}</span></li>
 															</ul>
-														</div>
-														{/* inc. share/reply and love */}
-														<div className="comment_tools">
-															<ul>
-																<li><i className="fa fa-share-alt" /></li>
-																<li><i className="fa fa-reply" /></li>
-																{/* <li><i className="fa fa-heart love">
-																<span className="love_amt"> 4</span></i></li> */}
-															</ul>
-														</div>
-														<div className="rate_comment">
-															{this.pickRating(this.state.rating)}
 														</div>
 													</div>
 												</li>
