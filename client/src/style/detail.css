@@ -84,6 +84,7 @@ body {
   padding: 10px;
 }
 .comment_block .create_new_comment {
+  display: flex;
   width: 100%;
   padding: 20px 0;
 }
@@ -93,14 +94,15 @@ body {
   margin-left: 10px;
   width: calc(100% - 75px);
 }
-.comment_block .create_new_comment .input_comment input[type="text"] {
+.comment_block .create_new_comment .input_comment textarea[type="text"] {
   width: 44%;
   font-family: "Lato", sans-serif;
   font-weight: 300;
   font-size: 1rem;
   padding: 20px;
   border: none;
-  border-bottom: 2px solid #f2f2f2;
+  border-bottom: 2px solid #bbbbbb;
+  resize: none;
 }
 .comment_block .create_new_comment .input_comment .comment_button{
   float: right;
@@ -116,20 +118,10 @@ body {
   0px 2px 4px #00CB834D,
   0px -2px 4px #00CB834D;
 }
-.comment_block .create_new_comment .input_comment input[type="text"]:focus {
+.comment_block .create_new_comment .input_comment textarea[type="text"]:focus {
   outline: none;
   border-bottom: 2px solid var(--blue);
 }
-.input_comment textarea {
-  width: 44%;
-  font-family: "Lato", sans-serif;
-  font-weight: 300;
-  font-size: 1rem;
-  padding: 10px;
-  border: none;
-  /* border-bottom: 2px solid #f2f2f2; */
-}
-
 .comment_block .new_comment {
   width: 100%;
   height: auto;
