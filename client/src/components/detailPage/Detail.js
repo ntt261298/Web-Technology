@@ -152,11 +152,14 @@ class Detail extends React.Component {
 					<p>{question.problem}</p>
 					<br />
 					<div>
-						<pre><code className="c++ hljs">void main(){"{"}{"\n"}{"    "}int a,b;{"\n"}{"    "}char dv,chuc,tram;{"\n"}{"    "}clrscr();{"\n"}{"    "}printf("Nhap so bi nhan co 3 chu so a="); scanf("%d",&amp;a);{"\n"}{"    "}printf("Nhap so nhan co 3 chu so b="); scanf("%d",&amp;b);{"\n"}{"    "}dv=b%10;{"\n"}{"    "}chuc=b%100/10;{"\n"}{"    "}tram=b/100;{"\n"}{"    "}printf("\nMo phong phep nhan tay\n\n");{"\n"}{"    "}printf("%20d\n",a);{"\n"}{"    "}printf("%15c%5d\n",'x',b);{"\n"}{"    "}printf("%20s\n","-------");{"\n"}{"    "}printf("%20d\n",a*dv);{"\n"}{"    "}printf("%19d\n",a*chuc);{"\n"}{"    "}printf("%18d\n",a*tram);{"\n"}{"    "}printf("%20s\n","-------");{"\n"}{"    "}printf("%20ld\n",long(a)*b);{"\n"}{"    "}getch();{"\n"}{"}"}{"\n"}</code></pre>
+						<pre><code className={`${question.category} hljs`}>
+								{question.code}
+						</code></pre>
 					</div>
 					<div>
 						<h5>Star Rating</h5>
 						{this.pickRating('question' ,this.state.rating)}
+						{' '}({question.rating} average)
 						<a href="#Nhúng link list câu hỏi" className="detail_lang">{question.category}</a>
 					</div>
 				</div>
@@ -168,7 +171,7 @@ class Detail extends React.Component {
 					<div className="create_new_comment">
 						{/* current #{user} avatar */}
 						<Link to={`/user/${question.userId}`} className="user_avatar">
-							<img src="https://s3.amazonaws.com/uifaces/faces/twitter/BillSKenney/73.jpg" />
+							<img style={{background: 'var(--blue)'}} src="../image/account-circle.svg" />
 						</Link>
 						{/* the input field */}
 						<div className="input_comment">
@@ -185,13 +188,13 @@ class Detail extends React.Component {
             			</Button>
 						</div>
 					</div>
-					{ answer.map(({_id, answer, userID, code, created_at, name}, index) => (
+					{ answer.map(({_id, answer, userID, code, created_at, name, rating}, index) => (
 						<div className="new_comment">
 						{/* build comment */}
 						<ul className="user_comment">
 							{/* current #{user} avatar */}
 							<Link to={`/user/${_id}`} className="user_avatar">
-								<img src="https://s3.amazonaws.com/uifaces/faces/twitter/dancounsell/73.jpg" />
+								<img src="https://s3.amazonaws.com/uifaces/faces/twitter/dancounse" />
 							</Link>{/* the comment body */}<div className="comment_body">
 								<p>{answer}</p>
 								<br />
@@ -210,6 +213,7 @@ class Detail extends React.Component {
 										<li><i className="fa fa-clock-o" />{ this.getTime(created_at, Date()) }</li>
 										<li><i className="fa fa-pencil" />
 											<span className="user">{name}</span></li>
+											<li><span>{rating}{' '}rating</span></li>
 									</ul>
 								</div>
 								{/* inc. share/reply and rate */}
