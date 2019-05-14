@@ -27,13 +27,17 @@ class ViewUser extends React.Component {
                         <th className="text-center">Comment</th>
                         <th className="text-center">Rating</th>
                       </tr>
-                      <tr>
-                        <th className="text-center">{user._doc.username}</th>
-                        <th className="text-center">{user.question}</th>
-                        <th className="text-center">{user.answer}</th>
-                        <th className="text-center">{user.comment}</th>
-                        <th className="text-center">{user.rating}</th>
-                      </tr>
+                      {
+                        user ? (
+                        <tr>
+                          <th className="text-center">{user._doc.username}</th>
+                          <th className="text-center">{user.question}</th>
+                          <th className="text-center">{user.answer}</th>
+                          <th className="text-center">{user.comment}</th>
+                          <th className="text-center">{user.rating}</th>
+                        </tr>
+                        ) : null
+                      }
                     </tbody>
                   </table>
             </div>
