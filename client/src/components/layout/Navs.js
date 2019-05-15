@@ -72,7 +72,7 @@ class Navs extends React.Component {
               </ul>
             </div>
             
-            <div className={`${this.state.nav}`}>
+            <div className='rating'>
               <h3>RATING</h3>
               <ul>
                 <li>

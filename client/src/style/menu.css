@@ -100,14 +100,18 @@
     padding: 5px;
   }
 
+  .logo .logo-img {
+    width: 50%;
+    height: 50%;
+  }
   .option {
     grid-area: option;
     text-align: center;
     display: flex;
     grid-gap: 10px;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(1, 1fr);
     grid-template-areas:
-      'dropdown cart'
+      'dropdown'
   }
   .dropdown {
     grid-area: dropdown;

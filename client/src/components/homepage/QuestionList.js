@@ -50,7 +50,7 @@ class QuestionList extends React.Component {
             
           </button>
         </div>
-        <div className="filter">
+        {/* <div className="filter">
           <div></div>
           <ul>
             <li>All</li>
@@ -58,7 +58,7 @@ class QuestionList extends React.Component {
             <li>Week</li>
             <li>Month</li>
           </ul>
-        </div>
+        </div> */}
         {/* { questions.slice(0, 12).map(({_id, title, category, rating, answers, views}, index) => (
           <div className={`question${index+1}`} key={_id}>
               

@@ -85,3 +85,10 @@ form .txt:hover, form .txtarea:hover{
   0px 2px 4px #00CB834D,
   0px -2px 4px #00CB834D;
 }
+/* Responsive Style */
+@media screen and (max-width: 600px) {
+  .ask-question-body {
+    margin-top: 150px; 
+    padding: 0 15px;
+  }
+}

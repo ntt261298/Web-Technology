@@ -3,11 +3,12 @@ import { GET_ANSWERS, ADD_ANSWER } from './types';
 
 export const getAnswers = (id) => dispatch => {
   axios.get(`/api/answer/${id}`)
-    .then(res =>
+    .then(res => {
       dispatch({
         type: GET_ANSWERS,
         payload: res.data
       })
+    }
     )
 };
 
