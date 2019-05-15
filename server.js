@@ -20,6 +20,7 @@ const userSignin = require('./routes/api/userSignin.js');
 const userLogout = require('./routes/api/userLogout.js');
 const userInfor = require('./routes/api/userInfor.js');
 const user = require('./routes/api/user.js');
+const notify = require('./routes/api/notify.js');
 
 
 const app = express();
@@ -76,6 +77,7 @@ app.use(function(req, res, next){
 app.use('/api/questions', questions);
 app.use('/api/answer', answer);
 app.use('/api/comment', comment);
+app.use('/api/notify', notify);
 app.use('/api/account/signup', userSignup);
 app.use('/api/account/signin', userSignin);
 app.use('/api/account/verify', userVerify);

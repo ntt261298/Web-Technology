@@ -7,6 +7,8 @@ const Answer = require('../../models/Answer.js');
 const User =require('../../models/User.js');
 // Book Model
 const Question =require('../../models/Question.js');
+// Notify Model
+const Notify = require('../../models/Notify.js');
 
 // @route GET api/answer
 // desc GET All answer
@@ -87,12 +89,31 @@ router.post('/', (req, res) => {
             answers.forEach(answer => {
               totalRating+= parseInt(answer.rating);
             });
-            let avgRating = parseInt(totalRating/answers.length);
+            let avg = totalRating/answers.length;
+            let avgRating = Math.round(avg * 100) / 100;
             console.log(avgRating);
             Question.findById(req.body.questionID, function(err, question) {
               if(err) console.log(err);
               question.rating = avgRating;
               question.save();
+              
+              Notify.find({userID: question.userId})
+                .then(notify => {
+                  if(notify[0]) {
+                    notify[0].status = true;
+                    notify[0].questionID = question._id;
+                    notify[0].userID = question.userId;
+                    console.log(notify[0]);
+                    notify[0].save();
+                    return;
+                  };
+                  let newNotify = new Notify({
+                    status: true,
+                    questionID: question._id,
+                    userID: question.userId,
+                  });
+                  newNotify.save();
+                })
             })
 })
       })

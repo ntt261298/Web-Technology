@@ -6,6 +6,7 @@ import searchReducer from './searchReducer';
 import commentReducer from './commentReducer';
 import answersReducer from './answersReducer';
 import userReducer from './userReducer';
+import notifyReducer from './notifyReducer';
 
 export default combineReducers({
   item: itemsReducer,
@@ -15,4 +16,5 @@ export default combineReducers({
   comment: commentReducer,
   answer: answersReducer,
   user: userReducer,
+  notify: notifyReducer,
 })

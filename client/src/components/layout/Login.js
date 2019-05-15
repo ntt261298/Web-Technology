@@ -4,6 +4,7 @@ import { toggleLogin, toggleForget, } from '../../actions/questionsAction';
 import { verifyToken, userLogin, userSignup } from '../../actions/accountsAction';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
+import toastr from 'toastr';
 
 class Login extends React.Component {
   constructor(props) {
@@ -96,8 +97,11 @@ class Login extends React.Component {
       loginpassword: '',
       signupusername: '',
       signuppassword: '',
-      signuprepassword: '',
-    })
+      resignuppassword: '',
+    });
+    if(!this.props.account.loginErr) {
+      toastr.success('Login successfully');
+    }
   }
 onSignupnameChange(e) {
   this.setState({
@@ -117,8 +121,11 @@ onSignupemailChange(e) {
       signupname: '',
       signupemail: '',
       signuppassword: '',
-      signuprepassword: ''
-    })
+      resignuppassword: '',
+    });
+    if(!this.props.account.signupErr) {
+      toastr.success('Signup successfully');
+    }
   }
 
   onForgetClick() {

@@ -3,6 +3,7 @@ import '../../style/menu.css';
 import { UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 import { toggleLogin } from '../../actions/questionsAction';
 import { userLogout } from '../../actions/accountsAction';
+import { getNotify, removeNotify } from '../../actions/notifyAction';
 import { getSearchResults } from '../../actions/searchAction';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -16,6 +17,12 @@ class Menu extends React.Component {
   constructor(props) {
     super(props);
     this.onLoginClick = this.onLoginClick.bind(this);
+  }
+
+  componentDidMount() {
+    if(this.props.account.token) {
+      this.props.getNotify(this.props.account.token)
+    }
   }
 
   onLoginClick() {
@@ -60,7 +67,8 @@ class Menu extends React.Component {
     const token = this.props.account.token;
     const searching = this.state.searching;
     const results = this.props.search.results;
-    console.log(results);
+    const notify = this.props.notify.notify[0];
+    console.log(notify);
     return (
       <div>
         <div className="header">
@@ -105,6 +113,16 @@ class Menu extends React.Component {
                     </div>
                   </DropdownToggle>
                   <DropdownMenu>
+                    {
+                      notify && notify.status ? (
+                        <Link to={`/detail/${notify.questionID}`} onClick={() => this.props.removeNotify(token)}>
+                          <DropdownItem>
+                            Notifications
+                          </DropdownItem>
+                        </Link>
+                      ) : null
+                    }
+                      <DropdownItem divider />
                     <Link to='/user'>
                       <DropdownItem>
                         Activities
@@ -129,10 +147,11 @@ Menu.propTypes = {
   getSearchResults: PropTypes.func.isRequired
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = state => (  {
   cart: state.cart,
   item: state.item,
   account: state.account,
-  search: state.search
+  search: state.search,
+  notify: state.notify,
 })
-export default connect(mapStateToProps, { toggleLogin, userLogout, getSearchResults })(Menu);
+export default connect(mapStateToProps, { toggleLogin, userLogout, getSearchResults, getNotify, removeNotify })(Menu);

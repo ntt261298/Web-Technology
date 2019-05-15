@@ -23,4 +23,9 @@ export const SEARCH_CATE = 'SEARCH_CATE';
 export const GET_COMMENT = 'GET_COMMENT';
 export const ADD_COMMENT = 'ADD_COMMENT';
 export const GET_USER = 'GET_USER';
+export const GET_NOTIFY = 'GET_NOTIFY';
+export const REMOVE_NOTIFY = 'REMOVE_NOTIFY';
+
+
+
 

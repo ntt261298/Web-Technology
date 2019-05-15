@@ -159,7 +159,7 @@ class Detail extends React.Component {
 					<div>
 						<h5>Star Rating</h5>
 						{this.pickRating('question' ,this.state.rating)}
-						{' '}({question.rating} average)
+						{' '}({question.rating}/5 - {question.answers} total)
 						<a href="#Nhúng link list câu hỏi" className="detail_lang">{question.category}</a>
 					</div>
 				</div>
