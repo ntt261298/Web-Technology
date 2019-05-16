@@ -23,6 +23,8 @@ class Detail extends React.Component {
 		this.props.addView(this.props.id);
 	}
 
+
+
 	renderStar(rating) {
 		let star = [];
 		for (let i = 0; i < parseInt(rating); i++) {
@@ -130,7 +132,6 @@ class Detail extends React.Component {
 		const { question } = this.props.question;
 		const { answer } = this.props.answer;
 		const { comment } = this.props.comment;
-		console.log(answer);
 		return (
 			<div className="content">
 				<div className="question-home">

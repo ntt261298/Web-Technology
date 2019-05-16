@@ -21,7 +21,7 @@ export const setLoading = () => {
 
 export const getQuestions = () => dispatch => {
   dispatch(setLoading());
-  axios.get('/api/questions')
+  axios.get('http://127.0.0.1:5000/api/questions')
     .then(res => {
       console.log(res.data)
       dispatch({
@@ -33,7 +33,7 @@ export const getQuestions = () => dispatch => {
 };
 
 export const getQuestion = (id) => dispatch => {
-  axios.get(`/api/questions/detail/${id}`)
+  axios.get(`http://127.0.0.1:5000/api/questions/detail/${id}`)
     .then(res => {
       console.log(res.data);
       dispatch({
@@ -45,7 +45,7 @@ export const getQuestion = (id) => dispatch => {
 };
 
 export const addQuestion = (title, problem, code, category, token) => dispatch => {
-  axios.post(`/api/questions`, {
+  axios.post(`http://127.0.0.1:5000/api/questions`, {
     title, problem, code, category, token
   })
     .then(res => {
@@ -59,14 +59,14 @@ export const addQuestion = (title, problem, code, category, token) => dispatch =
 };
 
 export const addView = (id) => dispatch => {
-  axios.post(`/api/questions/addView`, {
+  axios.post(`http://127.0.0.1:5000/api/questions/addView`, {
     id
   })
 };
 
 export const getCate = () => dispatch => {
   dispatch(setLoading());
-  axios.get('/api/questions/cate')
+  axios.get('http://127.0.0.1:5000/api/questions/cate')
     .then(res =>
       dispatch({
         type: GET_CATE,

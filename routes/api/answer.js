@@ -38,10 +38,17 @@ router.get('/', (req, res) => {
 router.get('/:id', (req, res) => {
   const questionID = req.params.id;
   let questionAnswers = [];
-  Answer.find({questionID})
+  Answer.find({questionID: questionID})
     .sort({created_at: -1})
     .then(answers => {
+      console.log(answers);
+      if(!answers.length) {
+        console.log(answers);
+        res.json(answers);
+        return;
+      }
       answers.forEach(answer => {
+
       User.findById(answer.userID)
         .then(user => {
           const resAnswer = answer.toObject();

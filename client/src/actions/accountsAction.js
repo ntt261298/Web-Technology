@@ -5,7 +5,7 @@ import { loadState } from '../helpers/localStorage';
 export const verifyToken = () => dispatch => {
   const token = loadState();
   if(token) {
-    axios.get(`/api/account/verify?token=${token}`)
+    axios.get(`http://127.0.0.1:5000/api/account/verify?token=${token}`)
       .then(res => {
         if(res.data.success)
           dispatch({
@@ -19,7 +19,7 @@ export const verifyToken = () => dispatch => {
 }
 
 export const userLogin = (username, password) => dispatch => {
-    axios.post('/api/account/signin', {
+    axios.post('http://127.0.0.1:5000/api/account/signin', {
       username: username,
       password: password
     }).then(res =>
@@ -31,7 +31,7 @@ export const userLogin = (username, password) => dispatch => {
 }
 
 export const userSignup = (username, name, email, password, repassword) => dispatch => {
-    axios.post('/api/account/signup', {
+    axios.post('http://127.0.0.1:5000/api/account/signup', {
       username: username,
       name: name,
       email: email,
@@ -46,7 +46,7 @@ export const userSignup = (username, name, email, password, repassword) => dispa
 }
 
 export const userLogout = token => dispatch => {
-    axios.get(`/api/account/logout?token=${token}`)
+    axios.get(`http://127.0.0.1:5000/api/account/logout?token=${token}`)
     .then(res => {
       if(res.data.success)
         dispatch({
@@ -56,7 +56,7 @@ export const userLogout = token => dispatch => {
 }
 
 export const getUserQuestions = token => dispatch => {
-    axios.get(`/api/user/history/question?token=${token}`)
+    axios.get(`http://127.0.0.1:5000/api/user/history/question?token=${token}`)
     .then(res => {
         console.log(res.data);
         dispatch({
@@ -67,7 +67,7 @@ export const getUserQuestions = token => dispatch => {
 }
 
 export const getUserAnswers = token => dispatch => {
-  axios.get(`/api/user/history/answer?token=${token}`)
+  axios.get(`http://127.0.0.1:5000/api/user/history/answer?token=${token}`)
   .then(res => {
       dispatch({
         type: USER_ANSWER,
@@ -77,7 +77,7 @@ export const getUserAnswers = token => dispatch => {
 }
 
 export const getInfor = token => dispatch => {
-    axios.get(`/api/user/infor?token=${token}`)
+    axios.get(`http://127.0.0.1:5000/api/user/infor?token=${token}`)
     .then(res => {
         dispatch({
           type: USER_INFOR,
@@ -87,7 +87,7 @@ export const getInfor = token => dispatch => {
 }
 
 export const updateUserInfor = (token, name, phone, gender, birthday, address, pwd, newpwd, repwd) => dispatch => {
-    axios.post(`/api/user/infor`, {
+    axios.post(`http://127.0.0.1:5000/api/user/infor`, {
       token,
       name,
       phone,
@@ -107,7 +107,7 @@ export const updateUserInfor = (token, name, phone, gender, birthday, address, p
 }
 
 export const sendEmail = email => dispatch => {
-    axios.post(`/api/account/verify/forgot`, {
+    axios.post(`http://127.0.0.1:5000/api/account/verify/forgot`, {
       email: email
     })
     .then(res => {
@@ -119,7 +119,7 @@ export const sendEmail = email => dispatch => {
 }
 
 export const resetPassword = (token, pwd, repwd) => dispatch => {
-    axios.post(`/api/account/verify/reset`, {
+    axios.post(`http://127.0.0.1:5000/api/account/verify/reset`, {
       token: token,
       password: pwd,
       repassword: repwd
